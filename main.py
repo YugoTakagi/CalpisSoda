@@ -13,13 +13,20 @@ def main():
     dt = 0.08
     IND = np.arange(start = 0,stop = 100, step = 1, dtype = int)
     for index in IND:
-        print('index = {}'.format(index))
-        cy.using_model(0,0.6,0,0)
-        stateX, stateY = sov.using_algo(cy.get_v1()*dt, cy.get_v2()*dt, cy.get_v3()*dt)
-
+        #print('index = {}'.format(index))
+        cy.using_model(1.0,0,0,0)
+        sov.get_alfa(0)
+        stateX, stateY = sov.using_algo(cy.get_v1(), cy.get_v2(), cy.get_v3())
         cy.set_state(stateX, stateY, 0)
-        plt.plot(stateX, stateY, marker="o")
-        plt.pause(0.01)
+        if index==0:
+            plt.plot(stateX, stateY, marker="*")
+        elif index < 50:
+            plt.plot(stateX, stateY, marker="p")
+        else:
+            plt.plot(stateX, stateY, marker="o")
+        plt.pause(0.1)
+        plt.axis("equal")
+        plt.grid(True)
         plt.show
 
 if __name__ == '__main__':

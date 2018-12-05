@@ -24,9 +24,9 @@ class omu3(object):
     thsta = 0
     def __init__(self):
     	#//+++++PID GAIN SET+++++//
-    	self.pidX.set_gain(30,0,0)
-    	self.pidY.set_gain(30,0,0)
-    	self.pidTh.set_gain(3,0,0)
+    	self.pidX.set_gain(0.9,0,0)
+    	self.pidY.set_gain(0.9,0,0)
+    	self.pidTh.set_gain(0.8,0,0)
     	#//++++++++++++++++++++++//
         pass
         #sups 3omu, self).__init__()
@@ -58,6 +58,6 @@ class omu3(object):
 
     	self.inverse_kinematics_model(self.adjustmentX, self.adjustmentY, self.adjustmentTh, self.thsta)#theta to alfa no tigai ga wakaranai.
 
-        print("SetVelocity(get_v1()) = {}".format(self.get_v1()))
-        print("SetVelocity(get_v2()) = {}".format(self.get_v2()))
-        print("SetVelocity(get_v3()) = {}".format(self.get_v3()))
+        #print("SetVelocity(get_v1()) = {}".format(self.get_v1()))
+        #print("SetVelocity(get_v2()) = {}".format(self.get_v2()))
+        #print("SetVelocity(get_v3()) = {}".format(self.get_v3()))
