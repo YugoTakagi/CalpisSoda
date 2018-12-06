@@ -17,8 +17,6 @@ class synthesis_of_vector(object):
         #self.stateY = vell1*-np.sqrt(3)/2 +vell2*0 +vell3*np.sqrt(3)/2
         self.alfa += (vell1 + vell2 + vell3)/self.r
         return self.stateX*0.08, self.stateY*0.08, self.alfa*0.08
-    def get_alfa(self, alfa):
-        self.alfa = alfa
     def using_alfa(self):
         r_of_alfa = 0.2
 
