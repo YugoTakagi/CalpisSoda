@@ -20,6 +20,6 @@ class synthesis_of_vector(object):
     def using_alfa(self):
         r_of_alfa = 0.2
 
-        self.stateX_of_alfa = r_of_alfa*np.sin(alfa)
-        self.stateY_of_alfa = r_of_alfa*np.cos(alfa)
+        self.stateX_of_alfa += r_of_alfa*np.sin(alfa)
+        self.stateY_of_alfa += r_of_alfa*np.cos(alfa)
         return self.stateX_of_alfa, self.stateY_of_alfa

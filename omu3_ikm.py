@@ -30,7 +30,7 @@ class omu3(object):
     	#//++++++++++++++++++++++//
         pass
         #sups 3omu, self).__init__()
-    def inverse_kinematics_model(self, vx, vy, theta, alfa):
+    def inverse_kinematics_model(self, vx, vy, theta, alfa):#theta := ref, alfa := state
         #4-omuni no inverse_kinematics_model
         self.enlargement_vx = vx*np.cos(alfa) + vy*np.sin(alfa)
         self.enlargement_vy = vx*np.sin(alfa) + vy*np.cos(alfa)
