@@ -24,8 +24,8 @@ class omu3(object):
     thsta = 0
     def __init__(self):
     	#//+++++PID GAIN SET+++++//
-    	self.pidX.set_gain(1,0,0)
-    	self.pidY.set_gain(1,0,0)
+    	self.pidX.set_gain(1,0,0.3)
+    	self.pidY.set_gain(1,0,0.3)
     	self.pidTh.set_gain(1,0,0)
     	#//++++++++++++++++++++++//
         pass
