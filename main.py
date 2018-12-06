@@ -16,7 +16,7 @@ def main():
     sov = synthesis_of_vector()
     dt = 0.08
     theta = 0.0#np.pi/4
-    alfa = 0
+    stateAlfa = 0
 
     number_of_index = 1000
     ############################################################################
@@ -31,20 +31,25 @@ def main():
     plt.show()
     ############################################################################
     ############################################################################
+    r_of_stateAlfa = 2
     IND = np.arange(start = 0,stop = number_of_index, step = 1, dtype = int)
     plt.plot(0, 0, marker="*")
     for index in IND:
         #print('index = {}'.format(index))
-        cy.using_model(nplist_of_bezier1.T[0][index],nplist_of_bezier1.T[1][index],theta,alfa)
-        sov.get_alfa(alfa)
-        stateX, stateY = sov.using_algo(cy.get_v1(), cy.get_v2(), cy.get_v3())
-        cy.set_state(stateX, stateY, 0)
+        #cy.using_model(nplist_of_bezier1.T[0][index],nplist_of_bezier1.T[1][index],theta,index)
+        cy.using_model(0,0,-np.pi/6,index)
+        sov.get_alfa(stateAlfa)
+        stateX, stateY, stateAlfa = sov.using_algo(cy.get_v1(), cy.get_v2(), cy.get_v3())
+        cy.set_state(stateX, stateY, stateAlfa)
         if index==0:
             plt.plot(stateX, stateY, marker="*")
+            plt.plot(stateX+r_of_stateAlfa*np.sin(stateAlfa), stateY+r_of_stateAlfa*np.cos(stateAlfa), marker=".", color="#0AB721")
         elif index < number_of_index/2:
             plt.plot(stateX, stateY, marker="p", color="#4278C5")
+            plt.plot(stateX+r_of_stateAlfa*np.sin(stateAlfa), stateY+r_of_stateAlfa*np.cos(stateAlfa), marker=".", color="#0AB721")
         else:
             plt.plot(stateX, stateY, marker="o", color="#F56260")
+            plt.plot(stateX+r_of_stateAlfa*np.sin(stateAlfa), stateY+r_of_stateAlfa*np.cos(stateAlfa), marker=".", color="#0AB721")
         plt.pause(0.001)
         plt.axis("equal")
         plt.grid(True)
