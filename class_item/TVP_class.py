@@ -6,19 +6,7 @@ import csv
 from scipy import integrate
 from bezier_class import bezier
 from color_class import pycolor
-'''
-def __init__(self):
-    pass
-def get_p_max():
-    return self.p_max
-def vell_end():
-    return self.vell_end
-def all_time():
-    return self.all_time
-def making_TVP(self, x_ref, y_ref, vell_want, vell_start, vell_end, P_start):
 
-print pycolor.RED + "RED TEXT" + pycolor.END
-'''
 def main():
     '''inint*******************************
     ***************************************'''
@@ -33,19 +21,45 @@ class trapezoidal_velocity_profile(object):
     """docstring fs trapezoidal_velocity_profile."""
     p_max = 0
     time_end = 0
+    vx = []
+    vy = []
     def get_p_max(self):
         return self.p_max
     def get_time_end(self):
         return self.time_end
     def __init__(self):
         pass
+    def get_vx(self):
+        return
+        pass
+    def get_vy(self):
+        pass
+    def deside(self):
+        print('+--+-start deside-+--+')
+        num = int(self.time_end/0.008)
+
+        print('num = {}'.format(num))
+        print('+--+-end deside-+--+\n')
+        return num
+    def making_angle(self, NEW_LOBS, len_new_index_for_bezier):
+        x_ref = NEW_LOBS.T[0]
+        y_ref = NEW_LOBS.T[1]
+        IND = np.arange(start=0, stop=len_new_index_for_bezier-1, step=1, dtype= int)
+        for index in IND:
+            if (index - 1) <= 0:
+                dx = x_ref[index]
+                dy = y_ref[index]
+            else:
+                dx = x_ref[index] - x_ref[index-1]
+                dy = y_ref[index] - y_ref[index-1]
+            self.alfa.append(np.arctan(dy/dx))
+        return self.alfa
     def making_TVP(self, x_ref, y_ref, vell_want, vell_start, vell_end, P_start, time_start):
         #self.vell_end = vell_end
         theta = 0
         list_of_theta = []
         list_length = np.linspace(0, len(x_ref)-1, len(x_ref), dtype = int)
         #print("len(x_ref) = ", len(x_ref))
-        #print("list_length = ", list_length)
         curve_length = 0
         for index in list_length:
             if (index - 1) <= 0:
@@ -65,8 +79,9 @@ class trapezoidal_velocity_profile(object):
         #inint##############
         self.p_max = curve_length * 0.001#m  :=mitinori
         print("self.p_max = {}".format(self.p_max))
+        print("list_length = {}".format(list_length))
         #Vmax = 5.0#m/s
-        A = 5.0#m/ss
+        A = 1.0#m/ss
         ####################
         #vell_want, vell_start, vell_end, P_start
         T1 = (vell_want - vell_start)/A
@@ -137,7 +152,17 @@ class trapezoidal_velocity_profile(object):
         plt.plot(time,V,color ="#FE9A2E",ls="-.")#, linewidth=3
         plt.plot(time,P,color ="Green",ls="-.")
         #plt.show()
-        #'''
+        self.vx.extend(Vx)
+        self.vy.extend(Vy)
+        #print(self.vx)
+        with open('vx_ref.csv', 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(self.vx)
+        with open('vy_ref.csv', 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(self.vy)
+            #writer.writerow(sai)
+        '''
         header = [['time'], ['a'], ['v'], ['p'],['theta'],['Vx'],['Vy']]
         with open('sample.csv', 'w') as f:
             writer = csv.writer(f)  # writer
@@ -151,3 +176,5 @@ class trapezoidal_velocity_profile(object):
             writer.writerow(Vy)
             #writer.writerow(sai)
         #'''
+
+        return P
