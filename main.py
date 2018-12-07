@@ -56,6 +56,6 @@ def main():
         plt.show
 
 if __name__ == '__main__':
-    print("++  + start +  ++")
+    print("++  + start main +  ++")
     main()
-    print("++  +  end  +  ++")
+    print("++  +  end main  +  ++")
