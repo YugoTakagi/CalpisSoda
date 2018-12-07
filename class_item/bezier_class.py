@@ -28,5 +28,5 @@ class bezier(object):
         plt.plot(LOBS1.T[0], LOBS1.T[1])
         plt.axis("equal")
         plt.grid(True)
-        plt.show()
-        return LOBS1
+        #plt.show()
+        return LOBS1, list_of_bezier
