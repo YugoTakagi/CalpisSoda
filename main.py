@@ -16,7 +16,7 @@ def main():
     cy = omu3()
     sov = synthesis_of_vector()
     dt = 0.08
-    theta = 0.0#np.pi/4
+    theta = np.pi/4
 
     number_of_index = 100
     list_of_bezier1 = np.array([])
