@@ -38,15 +38,16 @@ class omu3(object):
         self.enlargement_vy = -1*vx*np.sin(state.yaw) + vy*np.cos(state.yaw)
         #self.enlargement_vx = vx
         #self.enlargement_vy = vy
-        '''
+        #'''
         self.v1 = 1/2*self.enlargement_vx - self.sqrt3/2*self.enlargement_vy +self.r*omega
         self.v2 = -1*self.enlargement_vx - 0*self.enlargement_vy +self.r*omega
         self.v3 = 1/2*self.enlargement_vx + self.sqrt3/2*self.enlargement_vy +self.r*omega
+        #'''
         '''
         self.v1 = -vx*np.cos(state.yaw) -vy*np.sin(state.yaw) +self.r*omega
         self.v2 = -vx*np.cos(state.yaw+2*np.pi/3) +vy*np.sin(state.yaw+2*np.pi/3) +self.r*omega
         self.v3 = vx*np.cos(state.yaw+np.pi/3) +vy*np.sin(state.yaw + np.pi/3) +self.r*omega
-
+        #'''
     def get_v1(self):
         return self.v1
     def get_v2(self):
