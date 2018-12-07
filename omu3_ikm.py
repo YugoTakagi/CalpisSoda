@@ -28,7 +28,7 @@ class omu3(object):
     	#//+++++PID GAIN SET+++++//
     	self.pidX.set_gain(1,0,0.3)
     	self.pidY.set_gain(1,0,0.3)
-    	self.pidTh.set_gain(1,0,0.3)
+    	self.pidTh.set_gain(0.1,0,0)
     	#//++++++++++++++++++++++//
         pass
         #sups 3omu, self).__init__()

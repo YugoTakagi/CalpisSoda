@@ -32,7 +32,7 @@ def main():
         plt.show()
         ############################################################################
         ############################################################################
-    r_of_stateAlfa = 2
+    r_of_stateAlfa = 1
     IND = np.arange(start = 0,stop = number_of_index, step = 1, dtype = int)
     plt.plot(0, 0, marker="$start$", markersize="20")
     for index in IND:
