@@ -42,8 +42,10 @@ class bezier(object):
         for ind in IND:
             new_lobs.append(list_of_bezier[new_index_for_bezier[ind]])
         NEW_LOBS = np.array(new_lobs)
+        '''
         plt.plot(NEW_LOBS.T[0], NEW_LOBS.T[1], marker="o")
         plt.axis("equal")
         plt.grid(True)
         plt.show()
+        '''
         return NEW_LOBS, new_lobs
