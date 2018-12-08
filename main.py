@@ -17,7 +17,7 @@ import csv
 def main():
     #############################  init target  ################################
     ############################################################################
-    bez = bezier(number_of_points=4000)
+    bez = bezier(number_of_points=100)
     tvp = trapezoidal_velocity_profile()
     arg = arrange_the_point()
     target = target_value_class(bez=bez, tvp=tvp, arg=arg)
