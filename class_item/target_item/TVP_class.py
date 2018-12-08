@@ -34,13 +34,8 @@ class trapezoidal_velocity_profile(object):
             else:
                 dx = x_ref[index] - x_ref[index - 1]
                 dy = y_ref[index] - y_ref[index - 1]
-                #dtheta.append(np.arctan(dx/dy))
-                ##dtheta = np.arctan(dx/dy)
-                #theta.append(theta[index-2] + dtheta[index-1])
-                #theta += dtheta
             ds = np.sqrt(dx**2 + dy**2)
             self.curve_length += ds
-            #list_of_theta.append(theta)
         print('+--+-end making_curve_length-+--+\n')
     def deside(self):
         print('+--+-start deside-+--+')

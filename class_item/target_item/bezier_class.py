@@ -4,7 +4,7 @@ import matplotlib.patches as patches
 class bezier(object):
     """docstring for bezier."""
     number_of_points = 0
-    def __init__(self,number_of_points):
+    def __init__(self,number_of_points=0):
         self.number_of_points = number_of_points
     def comb(self, n, k):
         m = 1
@@ -38,14 +38,14 @@ class bezier(object):
         plt.show()
         '''
         IND = np.arange(start=0, stop=len_new_index_for_bezier-1, step=1, dtype= int)
-        new_lobs = []
+        new_lob = []
         for ind in IND:
-            new_lobs.append(list_of_bezier[new_index_for_bezier[ind]])
-        NEW_LOBS = np.array(new_lobs)
+            new_lob.append(list_of_bezier[new_index_for_bezier[ind]])
+        NEW_LOBS = np.array(new_lob)
         '''
         plt.plot(NEW_LOBS.T[0], NEW_LOBS.T[1], marker="o")
         plt.axis("equal")
         plt.grid(True)
         plt.show()
-        '''
-        return NEW_LOBS, new_lobs
+        #'''
+        return NEW_LOBS, new_lob

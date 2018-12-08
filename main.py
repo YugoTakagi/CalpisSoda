@@ -15,24 +15,29 @@ import matplotlib.pyplot as plt
 import csv
 
 def main():
-    number_of_index = 4000
-    bez = bezier(number_of_index)
+    #############################  init target  ################################
+    ############################################################################
+    bez = bezier(number_of_points=4000)
     tvp = trapezoidal_velocity_profile()
     arg = arrange_the_point()
     target = target_value_class(bez=bez, tvp=tvp, arg=arg)
+    ############################################################################
+    ############################################################################
 
-
-
+    ##########################  init controler  ################################
+    ############################################################################
     cy = omu3()
-    state = State(x=0.0, y=-0.0, yaw=0.0)
+    state = State(x=0.0, y=0.0, yaw=0.0)
     dt = state.dt
     game = game_class(target=target, state=state, robot=cy)
+    ############################################################################
+    ############################################################################
 
     game.run_through_the_forest()
 
 
 
 if __name__ == '__main__':
-    print("++  + start +  ++")
+    print("++  + start main +  ++")
     main()
-    print("++  +  end  +  ++")
+    print("++  +  end main  +  ++")

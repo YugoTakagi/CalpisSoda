@@ -26,18 +26,15 @@ class omu3(object):
     alfasta = 0
     def __init__(self):
     	#//+++++PID GAIN SET+++++//
-    	self.pidX.set_gain(1,0,0.3)
-    	self.pidY.set_gain(1,0,0.3)
+    	self.pidX.set_gain(1,0,0)
+    	self.pidY.set_gain(1,0,0)
     	self.pidTh.set_gain(1,0,0.3)
     	#//++++++++++++++++++++++//
         pass
         #sups 3omu, self).__init__()
     def inverse_kinematics_model(self, state, vx, vy, omega):#theta := ref, alfa := state
-        #4-omuni no inverse_kinematics_model
         self.enlargement_vx = vx*np.cos(state.yaw) + vy*np.sin(state.yaw)
         self.enlargement_vy = -1*vx*np.sin(state.yaw) + vy*np.cos(state.yaw)
-        #self.enlargement_vx = vx
-        #self.enlargement_vy = vy
         #'''
         self.v1 = 1/2*self.enlargement_vx - self.sqrt3/2*self.enlargement_vy +self.r*omega
         self.v2 = -1*self.enlargement_vx - 0*self.enlargement_vy +self.r*omega

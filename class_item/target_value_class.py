@@ -36,6 +36,6 @@ class target_value_class(object):
         plt.show()
 
         new_index_for_bezier, len_new_index_for_bezier = self.arg.arrange(npLOB.T[0], npLOB.T[1], TVP_of_S)
-        npNEW_LOB, NEW_LOB = self.bez.new_bezier_plt(npLOB, new_index_for_bezier, len_new_index_for_bezier)
+        npNEW_LOB, NEW_LOB = self.bez.new_bezier_plt(LOB, new_index_for_bezier, len_new_index_for_bezier)
 
-        return npNEW_LOB, NEW_LOB
+        return npLOB, LOB,npNEW_LOB, NEW_LOB
