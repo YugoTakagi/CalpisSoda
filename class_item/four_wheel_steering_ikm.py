@@ -1,8 +1,8 @@
 from pid import pid
-from class_item.state_class import State
+from state_class import State
 
 import numpy as np
-class for_weel_steering_ikm(object):
+class four_wheel_steering_ikm(object):
     pidX = pid()
     pidY = pid()
     pidTh = pid()
@@ -23,8 +23,8 @@ class for_weel_steering_ikm(object):
     theta4=0
     def __init__(self):
     	#//+++++PID GAIN SET+++++//
-    	self.pidX.set_gain(1,0,0)
-    	self.pidY.set_gain(1,0,0)
+    	self.pidX.set_gain(10,0,0)
+    	self.pidY.set_gain(10,0,0)
     	self.pidTh.set_gain(1,0,0.3)
     	#//++++++++++++++++++++++//
     def inverse_kinematics_model(self, state, vx, vy, omega):#theta := ref, alfa := state
