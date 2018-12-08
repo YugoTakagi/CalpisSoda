@@ -31,7 +31,7 @@ def main():
     cy = omu3()
     fws = four_wheel_steering_ikm()
     state = State(x=0.0, y=0.0, yaw=0.0)
-    state_4ste = state_class_of_4ste(x=0.0, y=0.0, yaw=0.0)
+    state_4ste = state_class_of_4ste(x=0.0, y=0.0, yaw=np.pi/3)
     dt = state.dt
     #game = game_class(target=target, state=state, robot=cy)
     game = game_class(target=target, state=state_4ste, robot=fws)
