@@ -1,17 +1,6 @@
-from omu3_ikm import omu3
-from pid import pid
-from synthesis_of_vector import synthesis_of_vector
-
-from class_item.bezier_class import bezier
-from class_item.TVP_class import trapezoidal_velocity_profile
-from class_item.color_class import pycolor as pc
-from class_item.state_class import State
-from class_item.arrange_the_point_class import arrange_the_point
-
+from color_class import pycolor as pc
 import numpy as np
-import math
 import matplotlib.pyplot as plt
-import csv
 
 class target_value_class(object):
     """docstring for target_value_class."""

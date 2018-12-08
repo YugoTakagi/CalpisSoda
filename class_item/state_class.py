@@ -9,7 +9,6 @@ class State:
         self.r = 0.4
     def update(self, vell1, vell2, vell3):
         #dt wo kaketa houga yoi no ka?
-
         self.x += vell1*np.sin(5*np.pi/6 +self.yaw)*self.dt +vell2*np.sin(3*np.pi/2 +self.yaw)*self.dt +np.sin(np.pi/6 +self.yaw)*self.dt
         self.y += vell1*np.cos(5*np.pi/6 +self.yaw)*self.dt +vell2*np.cos(3*np.pi/2 +self.yaw)*self.dt +np.cos(np.pi/6 +self.yaw)*self.dt
 

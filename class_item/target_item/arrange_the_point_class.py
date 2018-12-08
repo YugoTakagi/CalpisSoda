@@ -29,8 +29,6 @@ class arrange_the_point(object):
                 error = -1.0 * error
             else:
                 pass
-
-
             if error < 3:
                 self.index.append(index_for_bezier)
                 error = 0.0
