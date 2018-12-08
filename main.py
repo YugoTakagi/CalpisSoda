@@ -19,7 +19,7 @@ def main():
     arg = arrange_the_point()
     new_index_for_bezier = []
     dt = 0.08
-    theta = np.pi/4
+    theta = 0#np.pi/4
 
     list_of_bezier1 = np.array([])
     state = State(x=0.0, y=-0.0, yaw=0.0)
@@ -46,10 +46,11 @@ def main():
     LOB.extend(list_of_bezier3)
     LOB.extend(list_of_bezier4)
     npLOB = np.array(LOB)
-    plt.plot(npLOB.T[0],npLOB.T[1], marker=".", color="#4278C5")
+    plt.plot(npLOB.T[0],npLOB.T[1], marker="*", color="#4278C5")
     plt.axis("equal")
     plt.grid(True)
     plt.show()
+    TVP1.making_curve_length(npLOB.T[0], npLOB.T[1])
     TVP_of_S = TVP1.making_TVP(npLOB.T[0], npLOB.T[1], 2.0, 0.0, 0.0, 0.0, 0.0)
     #TVP1.deside()
     plt.show()

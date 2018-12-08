@@ -38,13 +38,13 @@ class omu3(object):
         self.enlargement_vy = -1*vx*np.sin(state.yaw) + vy*np.cos(state.yaw)
         #self.enlargement_vx = vx
         #self.enlargement_vy = vy
-        '''
+        #'''
         self.v1 = 1/2*self.enlargement_vx - self.sqrt3/2*self.enlargement_vy +self.r*omega
         self.v2 = -1*self.enlargement_vx - 0*self.enlargement_vy +self.r*omega
         self.v3 = 1/2*self.enlargement_vx + self.sqrt3/2*self.enlargement_vy +self.r*omega
         #'''
 
-        #'''
+        '''
         self.v1 = vx*np.sin(5*np.pi/6 +state.yaw) +vy*np.cos(5*np.pi/6 +state.yaw)
         self.v2 = vx*np.sin(3*np.pi/2 +state.yaw) +vy*np.cos(3*np.pi/2 +state.yaw)
         self.v3 = vx*np.sin(np.pi/6 +state.yaw) +vy*np.cos(np.pi/6 +state.yaw)
