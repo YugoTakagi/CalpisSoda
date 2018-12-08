@@ -31,6 +31,12 @@ class bezier(object):
         plt.show()
         return LOBS1, list_of_bezier
     def new_bezier_plt(self, list_of_bezier, new_index_for_bezier, len_new_index_for_bezier):
+        '''ten ha sikkari haitte iru.
+        plt.plot(list_of_bezier.T[0],list_of_bezier.T[1], marker="*", color="#4278C5")
+        plt.axis("equal")
+        plt.grid(True)
+        plt.show()
+        '''
         IND = np.arange(start=0, stop=len_new_index_for_bezier-1, step=1, dtype= int)
         new_lobs = []
         for ind in IND:

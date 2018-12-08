@@ -16,18 +16,18 @@ import csv
 def main():
     cy = omu3()
     sov = synthesis_of_vector()
-    arg = arrange_the_point()
-    new_index_for_bezier = []
-    dt = 0.08
-    theta = 0#np.pi/4
 
-    list_of_bezier1 = np.array([])
     state = State(x=0.0, y=-0.0, yaw=0.0)
+    dt = state.dt
+    ##############################  making_ref  ################################
     ############################################################################
-    ############################################################################
-    number_of_index = 100
+    number_of_index = 4000
     bez = bezier(number_of_index)
     TVP1 = trapezoidal_velocity_profile()
+    arg = arrange_the_point()
+    #list_of_bezier1 = np.array([])
+    new_index_for_bezier = []
+    theta = 0#np.pi/4
 
     #list_of_bezier_set1 = np.array([[7*74,7*74],[4000,(25*74+46*74)/2],[-800,(25*74+46*74)/2],[17*74,(66*74+46*74)/2]], dtype=np.float)
     list_of_bezier_set1 = np.array([[0,0],[1.225,0],[1.225+0.5,2.000-1.225],[1.225+0.500,2.000]], dtype=np.float)
@@ -52,12 +52,11 @@ def main():
     plt.show()
     TVP1.making_curve_length(npLOB.T[0], npLOB.T[1])
     TVP_of_S = TVP1.making_TVP(npLOB.T[0], npLOB.T[1], 2.0, 0.0, 0.0, 0.0, 0.0)
-    #TVP1.deside()
+    TVP1.deside()
     plt.show()
 
-    #new_index_for_bezier, len_new_index_for_bezier = arg.arrange(npLOB.T[0], npLOB.T[1], TVP_of_S)
-    #npNEW_LOB, NEW_LOB = bez.new_bezier_plt(npLOB, new_index_for_bezier, len_new_index_for_bezier)
-
+    new_index_for_bezier, len_new_index_for_bezier = arg.arrange(npLOB.T[0], npLOB.T[1], TVP_of_S)
+    npNEW_LOB, NEW_LOB = bez.new_bezier_plt(npLOB, new_index_for_bezier, len_new_index_for_bezier)
     ############################################################################
     ############################################################################
     r_of_stateAlfa = 0.005

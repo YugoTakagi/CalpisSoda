@@ -10,6 +10,7 @@ class arrange_the_point(object):
         #super(arrange_the_point, self).__init__()
         pass
     def arrange(self, bezier_set_x, bezier_set_y, TVP_of_S):
+        print('+--+-start arrange-+--+')
         index_for_TVP = 0
         count = 0
         Ib = np.arange(start=0.0, stop=len(bezier_set_x)-1, step=1, dtype= int)
@@ -30,7 +31,7 @@ class arrange_the_point(object):
                 pass
 
 
-            if error < 1.592:
+            if error < 3:
                 self.index.append(index_for_bezier)
                 error = 0.0
                 index_for_TVP = index_for_TVP + 1
@@ -42,4 +43,5 @@ class arrange_the_point(object):
                 pass
         #print('self.index = {}'.format(self.index))
         print('len(self.index) = {}'.format(len(self.index)))
+        print('+--+-end arrange-+--+')
         return self.index, len(self.index)
