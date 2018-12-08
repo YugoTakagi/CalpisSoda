@@ -33,10 +33,16 @@ class four_wheel_steering_ikm(object):
         self.v3 = np.sqrt( (vx+self.r*omega*np.sin(state.yaw))**2 + (vy-self.r*omega*np.cos(state.yaw))**2 )
         self.v4 = np.sqrt( (vx+self.r*omega*np.cos(state.yaw))**2 + (vy+self.r*omega*np.sin(state.yaw))**2 )
 
-        self.theta1 = np.arctan( (vy+self.r*omega*np.cos(state.yaw))/(vx-self.r*omega*np.sin(state.yaw)) )
-        self.theta2 = np.arctan( (vy-self.r*omega*np.sin(state.yaw))/(vx-self.r*omega*np.cos(state.yaw)) )
-        self.theta3 = np.arctan( (vy-self.r*omega*np.cos(state.yaw))/(vx+self.r*omega*np.sin(state.yaw)) )
-        self.theta4 = np.arctan( (vy+self.r*omega*np.sin(state.yaw))/(vx+self.r*omega*np.cos(state.yaw)) )
+        if (vx-self.r*omega*np.sin(state.yaw))==0 or (vx-self.r*omega*np.cos(state.yaw))==0 or (vx+self.r*omega*np.sin(state.yaw))==0 or (vx+self.r*omega*np.cos(state.yaw))==0:
+            self.theta1 = 0
+            self.theta2 = 0
+            self.theta3 = 0
+            self.theta4 = 0
+        else:
+            self.theta1 = np.arctan( (vy+self.r*omega*np.cos(state.yaw))/(vx-self.r*omega*np.sin(state.yaw)) )
+            self.theta2 = np.arctan( (vy-self.r*omega*np.sin(state.yaw))/(vx-self.r*omega*np.cos(state.yaw)) )
+            self.theta3 = np.arctan( (vy-self.r*omega*np.cos(state.yaw))/(vx+self.r*omega*np.sin(state.yaw)) )
+            self.theta4 = np.arctan( (vy+self.r*omega*np.sin(state.yaw))/(vx+self.r*omega*np.cos(state.yaw)) )
     def get_v1(self):
         return self.v1
     def get_v2(self):
