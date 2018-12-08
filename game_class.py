@@ -19,27 +19,22 @@ class game_class(object):
         self.target = target
         self.state = state
         self.omu3 = robot
-
     def run_through_the_forest(self):
         ##############################  making_ref  ################################
         ############################################################################
         #list_of_bezier1 = np.array([])
         new_index_for_bezier = []
         theta = 0#np.pi/4
-
         #list_of_bezier_set1 = np.array([[7*74,7*74],[4000,(25*74+46*74)/2],[-800,(25*74+46*74)/2],[17*74,(66*74+46*74)/2]], dtype=np.float)
         list_of_bezier_set1 = np.array([[0,0],[1.225,0],[1.225+0.5,2.000-1.225],[1.225+0.500,2.000]], dtype=np.float)
         list_of_bezier_set2 = np.array([[1.225+0.500,2.000],[1.225+0.500,2.000+0.500],[1.225-0.500,2.000+1.500-0.500],[1.225-0.500,2.000+1.500]], dtype=np.float)
         list_of_bezier_set3 = np.array([[1.225-0.500,2.000+1.500],[1.225-0.500,2.000+1.500+0.500],[1.225+0.500,2.000+1.500+1.500-0.500],[1.225+0.500,2.000+1.500+1.500]], dtype=np.float)
         list_of_bezier_set4 = np.array([[1.225+0.500,2.000+1.500+1.500],[1.225+0.500,2.000+1.500+1.500+0.500],[1.225,2.000+1.500+1.500+1.500-0.500],[1.225,2.000+1.500+1.500+1.500]], dtype=np.float)
-
-
-        ############################################################################
-        ############################################################################
         r_of_stateAlfa = 0.005
         plt.plot(0, 0, marker="$start$", markersize="20")
-        npNEW_LOB, NEW_LOB = self.target.making_target_value(list_of_bezier_set1, list_of_bezier_set2, list_of_bezier_set3, list_of_bezier_set4)
-
+        npNEW_LOB, NEW_LOB = self.target.making_target_value(list_of_bezier_set1, list_of_bezier_set2, list_of_bezier_set3, list_of_bezier_set4
+        ############################################################################
+        ############################################################################
         '''
         print("len(LOB) = {}".format(len(LOB)))
         IND = np.arange(start = 0,stop = len(LOB), step = 1, dtype = int)
