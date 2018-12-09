@@ -19,7 +19,7 @@ import csv
 def main():
     #############################  init target  ################################
     ############################################################################
-    bez = bezier(number_of_points=100)
+    bez = bezier(number_of_points=1500)
     tvp = trapezoidal_velocity_profile()
     arg = arrange_the_point()
     target = target_value_class(bez=bez, tvp=tvp, arg=arg)
@@ -31,7 +31,7 @@ def main():
     cy = omu3()
     fws = four_wheel_steering_ikm()
     state = State(x=0.0, y=0.0, yaw=0.0)
-    state_4ste = state_class_of_4ste(x=0.0, y=0.0, yaw=np.pi/3)
+    state_4ste = state_class_of_4ste(x=0.0, y=0.0, yaw=np.pi/6)
     dt = state.dt
     #game = game_class(target=target, state=state, robot=cy)
     game = game_class(target=target, state=state_4ste, robot=fws)

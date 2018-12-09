@@ -22,7 +22,7 @@ class game_class(object):
         ############################################################################
         ############################################################################
         model = '4ste'
-        check = 0
+        check = 1
         anime = 1
         if model=='4ste':
             if check == 0:
@@ -50,6 +50,34 @@ class game_class(object):
                             plt.plot(self.state.x3, self.state.y3, marker="o", color="#93ffff")
                             plt.plot(self.state.x4, self.state.y4, marker="o", color="#93ffc9")
                         plt.pause(0.01)
+                        plt.axis("equal")
+                        plt.grid(True)
+                        plt.show
+            elif check == 1:
+                print("len(NEW_LOB) = {}".format(len(NEW_LOB)))
+                IND = np.arange(start = 0,stop = len(NEW_LOB), step = 1, dtype = int)
+                for index in IND:
+                    #self.state.update(self.robo.get_v1(), self.robo.get_v2(), self.robo.get_v3())
+                    self.state.update(vell1=self.robo.get_v1(), vell2=self.robo.get_v2(), vell3=self.robo.get_v3(), vell4=self.robo.get_v4(), theta1=self.robo.get_theta1(), theta2=self.robo.get_theta2(), theta3=self.robo.get_theta3(), theta4=self.robo.get_theta2())
+                    self.robo.using_model(self.state, npNEW_LOB.T[0][index], npNEW_LOB.T[1][index], theta, index)
+                    if anime == 1:
+                        if index==0:
+                            plt.plot(self.state.x1, self.state.y1, marker="*")
+                            plt.plot(self.state.x2, self.state.y2, marker="*")
+                            plt.plot(self.state.x3, self.state.y3, marker="*")
+                            plt.plot(self.state.x4, self.state.y4, marker="*")
+
+                        elif index < len(LOB)/2:
+                            plt.plot(self.state.x1, self.state.y1, marker="p", color="#ff9393")
+                            plt.plot(self.state.x2, self.state.y2, marker="p", color="#ff93c9")
+                            plt.plot(self.state.x3, self.state.y3, marker="p", color="#ff93ff")
+                            plt.plot(self.state.x4, self.state.y4, marker="p", color="#c993ff")
+                        else:
+                            plt.plot(self.state.x1, self.state.y1, marker="o", color="#9393ff")
+                            plt.plot(self.state.x2, self.state.y2, marker="o", color="#93c9ff")
+                            plt.plot(self.state.x3, self.state.y3, marker="o", color="#93ffff")
+                            plt.plot(self.state.x4, self.state.y4, marker="o", color="#93ffc9")
+                        plt.pause(0.001)
                         plt.axis("equal")
                         plt.grid(True)
                         plt.show
