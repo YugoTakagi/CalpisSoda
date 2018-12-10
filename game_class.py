@@ -22,6 +22,7 @@ class game_class(object):
         ############################################################################
         ############################################################################
         model = '4ste'
+        #model = '3omu'
         check = 1
         anime = 1
         if model=='4ste':
@@ -81,7 +82,7 @@ class game_class(object):
                         plt.axis("equal")
                         plt.grid(True)
                         plt.show
-        elif medel=='3omu':
+        elif model=='3omu':
             if check == 0:
                 print("len(LOB) = {}".format(len(LOB)))
                 IND = np.arange(start = 0,stop = len(LOB), step = 1, dtype = int)
