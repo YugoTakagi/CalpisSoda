@@ -127,26 +127,25 @@ class trapezoidal_velocity_profile(object):
         arange_time = np.arange(start=0.0, stop=len(time_count)-1, step=1, dtype= int)
         #print('linspace_time = {}'.format(linspace_time))
         '''
-        for index in linspace_time:
+        for index in arange_time:#linspace_time:
             if (index - 1) <= 0:
                 Vx.append(V[index] * np.sin(list_of_theta[index]))
                 Vy.append(V[index] * np.cos(list_of_theta[index]))
+                print("index = {}".format(index))
             else:
                 Vx.append(V[index] * np.sin(list_of_theta[index-1]))
                 Vy.append(V[index] * np.cos(list_of_theta[index-1]))
                 print("index = {}".format(index))
-        '''
-        #time = np.linspace(0+time_start, T+time_start, T*time_count)
+        #'''
         time = np.arange(start=0.0+time_start, stop=self.time_end+time_start, step=0.008, dtype= np.float)
-        #print("\n")
         plt.plot(time,Ac,color ="red", marker="o")#marker=".", ls=""
         plt.plot(time,V,color ="#FE9A2E", marker="o")#linewidth=3
         plt.plot(time,P,color ="Green", marker="o")
 
-        with open('vx_ref.csv', 'w') as f:
+        with open('csv_item/vx_ref.csv', 'w') as f:
             writer = csv.writer(f)  # writer
             writer.writerow(Vx)
-        with open('vx_ref.csv', 'w') as f:
+        with open('csv_item/vy_ref.csv', 'w') as f:
             writer = csv.writer(f)  # writer
             writer.writerow(Vy)
         print('+--+-end making_TVP-+--+\n')

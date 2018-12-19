@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+import csv
 class bezier(object):
     """docstring for bezier."""
     number_of_points = 0
@@ -42,7 +43,14 @@ class bezier(object):
         for ind in IND:
             new_lob.append(list_of_bezier[new_index_for_bezier[ind]])
         NEW_LOBS = np.array(new_lob)
-        '''
+
+        with open('csv_item/x_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(NEW_LOBS.T[0])
+        with open('csv_item/y_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(NEW_LOBS.T[1])
+        #'''
         plt.plot(NEW_LOBS.T[0], NEW_LOBS.T[1], marker="o")
         plt.axis("equal")
         plt.grid(True)

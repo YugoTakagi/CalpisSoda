@@ -4,10 +4,9 @@ import matplotlib.patches as patches
 
 class arrange_the_point(object):
     """docstring for arrange_the_point."""
-    delta_s = 0
+    delta_s = 0.0
     index = []
     def __init__(self):
-        #super(arrange_the_point, self).__init__()
         pass
     def arrange(self, bezier_set_x, bezier_set_y, TVP_of_S):
         print('+--+-start arrange-+--+')
@@ -29,7 +28,7 @@ class arrange_the_point(object):
                 error = -1.0 * error
             else:
                 pass
-            if error < 3:
+            if error < 4:
                 self.index.append(index_for_bezier)
                 error = 0.0
                 index_for_TVP = index_for_TVP + 1
