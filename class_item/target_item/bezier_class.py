@@ -25,12 +25,12 @@ class bezier(object):
         list_of_bezier = []
         for t in np.linspace(0, 1, self.number_of_points):
             list_of_bezier.append(self.bezier(3,t,bezier_set1))
-        LOBS1 = np.array(list_of_bezier)
-        plt.plot(LOBS1.T[0], LOBS1.T[1])
+        LOBS = np.array(list_of_bezier)
+        plt.plot(LOBS.T[0], LOBS.T[1], marker="o")
         plt.axis("equal")
         plt.grid(True)
         plt.show()
-        return LOBS1, list_of_bezier
+        return LOBS, list_of_bezier
     def new_bezier_plt(self, list_of_bezier, new_index_for_bezier, len_new_index_for_bezier):
         '''ten ha sikkari haitte iru.
         plt.plot(list_of_bezier.T[0],list_of_bezier.T[1], marker="*", color="#4278C5")
@@ -43,6 +43,7 @@ class bezier(object):
         for ind in IND:
             new_lob.append(list_of_bezier[new_index_for_bezier[ind]])
         NEW_LOBS = np.array(new_lob)
+<<<<<<< HEAD
 
         with open('csv_item/x_ref.csv', 'w') as f:
             writer = csv.writer(f)  # writer
@@ -50,6 +51,8 @@ class bezier(object):
         with open('csv_item/y_ref.csv', 'w') as f:
             writer = csv.writer(f)  # writer
             writer.writerow(NEW_LOBS.T[1])
+=======
+>>>>>>> f572dca13b62335e276559baeb72b75bfac8ca34
         #'''
         plt.plot(NEW_LOBS.T[0], NEW_LOBS.T[1], marker="o")
         plt.axis("equal")

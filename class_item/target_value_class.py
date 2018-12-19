@@ -1,6 +1,7 @@
 from color_class import pycolor as pc
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
 
 class target_value_class(object):
     """docstring for target_value_class."""
@@ -30,6 +31,12 @@ class target_value_class(object):
         plt.axis("equal")
         plt.grid(True)
         plt.show()
+        with open('csv_item/x_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(npLOB.T[0])
+        with open('csv_item/y_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(npLOB.T[1])
         self.tvp.making_curve_length(npLOB.T[0], npLOB.T[1])
         TVP_of_S = self.tvp.making_TVP(npLOB.T[0], npLOB.T[1], 2.0, 0.0, 0.0, 0.0, 0.0)
         self.tvp.deside()
