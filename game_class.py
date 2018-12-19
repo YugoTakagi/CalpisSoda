@@ -28,7 +28,7 @@ class game_class(object):
         model = '4ste'
         #model = '3omu'
         check = 1
-        anime = 1
+        anime = 0
         if model=='4ste':
             if check == 0:
                 print("len(LOB) = {}".format(len(LOB)))
@@ -137,3 +137,10 @@ class game_class(object):
                     plt.show
         else:
             print("model error")
+
+    def run(self):
+        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test1()
+        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker=".", color="#F7BE81")
+    	plt.axis("equal")
+    	plt.grid((True))
+    	plt.show()

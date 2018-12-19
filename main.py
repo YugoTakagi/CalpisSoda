@@ -19,7 +19,7 @@ import csv
 def main():
     #############################  init target  ################################
     ############################################################################
-    bez = bezier(number_of_points=500)
+    bez = bezier(number_of_points=10000)
     tvp = trapezoidal_velocity_profile()
     arg = arrange_the_point()
     target = target_value_class(bez=bez, tvp=tvp, arg=arg)
@@ -38,7 +38,8 @@ def main():
     ############################################################################
     ############################################################################
 
-    game.run_through_the_forest()
+    #game.run_through_the_forest()
+    game.run()
 
 
 

@@ -40,7 +40,6 @@ class trapezoidal_velocity_profile(object):
     def deside(self):
         print('+--+-start deside-+--+')
         num = int(self.time_end/0.008)
-
         print('num = {}'.format(num))
         print('+--+-end deside-+--+\n')
         return num
