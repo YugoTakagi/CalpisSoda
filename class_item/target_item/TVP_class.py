@@ -114,8 +114,6 @@ class trapezoidal_velocity_profile(object):
                 Ac.append(-A)
                 v3 = -A*(t-(T1+T2))/2.0 +v2
                 V.append(v3)
-                #p3 = -A*(t-(T1+T2))**2/2 +p2
-                #p3 = -A*(t-self.time_end)**2 + self.p_max
                 p3 = -A*(t-(T1+T2))**2/2.0 +A*T1*(t-(T1+T2)) +p2
                 P.append(p3)
             else:
