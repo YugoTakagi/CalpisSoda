@@ -139,7 +139,8 @@ class game_class(object):
             print("model error")
 
     def run(self):
-        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test1()
+        #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
+        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_read()
         plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker=".", color="#F7BE81")
     	plt.axis("equal")
     	plt.grid((True))
