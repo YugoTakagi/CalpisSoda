@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 class game_class(object):
     """docstring for game_class."""
@@ -140,8 +141,34 @@ class game_class(object):
 
     def run(self):
         #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
-        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_read()
-        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker=".", color="#F7BE81")
-    	plt.axis("equal")
-    	plt.grid((True))
-    	plt.show()
+        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_red()
+        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker=".", color="#F5A9A9")
+        ########################################################################
+        ax = plt.axes()
+        #c = patches.Circle(xy=(0, 0), radius=0.5, ec='#F5A9A9',fill=False)
+        #ax.add_patch(c)
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        #'''
+        COUNT = np.arange(start=0, stop=1535, step=1, dtype= int)
+        ssp=[-0.5,-0.5]
+        for count in COUNT:
+            c = patches.Circle(xy=(npNEW_LOB.T[0][count],npNEW_LOB.T[1][count]), radius=0.4, ec='#F5A9A9',fill=False)
+            ax.add_patch(c)
+
+        d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(d)
+        e = patches.Circle(xy=(-1*(1.225+ssp[0]),3.5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(e)
+        f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(f)
+        #'''
+        ########################################################################
+        ########################################################################
+        ########################################################################
+
+
+        plt.axis("equal")
+        plt.grid(True)
+        plt.show()

@@ -1,4 +1,4 @@
-from pid import pid
+from class_item.pid import pid
 from class_item.state_class import State
 
 import numpy as np
@@ -25,11 +25,11 @@ class omu3(object):
     ysta = 0
     alfasta = 0
     def __init__(self):
-    	#//+++++PID GAIN SET+++++//
-    	self.pidX.set_gain(1,0,0)
-    	self.pidY.set_gain(1,0,0)
-    	self.pidTh.set_gain(1,0,0.3)
-    	#//++++++++++++++++++++++//
+        #//+++++PID GAIN SET+++++//
+        self.pidX.set_gain(1,0,0)
+        self.pidY.set_gain(1,0,0)
+        self.pidTh.set_gain(1,0,0.3)
+        #//++++++++++++++++++++++//
         pass
         #sups 3omu, self).__init__()
     def inverse_kinematics_model(self, state, vx, vy, omega):#theta := ref, alfa := state
