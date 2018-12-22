@@ -184,3 +184,28 @@ class game_class(object):
         plt.axis("equal")
         plt.grid(True)
         plt.show()
+
+
+
+
+
+        INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
+        X = []
+        Y = []
+        x=0
+        y=0
+        vx=self.target.get_vx()
+        vy=self.target.get_vy()
+        for index in INDEX:
+            x = x + vx[index] * 0.008
+            y = y + vy[index] * 0.008
+            X.append(x)
+            Y.append(y)
+        plt.plot(X,Y,marker="o")
+
+        #plt.pause(0.01)
+        plt.axis("equal")
+        plt.grid(True)
+        plt.show()
+    def run_FF(self):
+        pass

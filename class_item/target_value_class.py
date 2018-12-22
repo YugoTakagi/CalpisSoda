@@ -7,6 +7,7 @@ class target_value_class(object):
     """docstring for target_value_class."""
     vx = []
     vy = []
+    alfa = []
     omega = []
     x = []
     y = []
@@ -15,6 +16,23 @@ class target_value_class(object):
         self.bez = bez
         self.tvp = tvp
         self.arg = arg
+    def get_vx(self):
+        return self.vx
+    def get_vy(self):
+        return self.vy
+    def get_alfa(self):
+        return self.alfa
+    def making_vx_and_vy(self,V,ALFA,time_count):
+        arange_time = np.arange(start=0.0, stop=time_count-1, step=1, dtype= int)
+        for index in arange_time:#linspace_time:
+            if (index - 1) <= 0:
+                self.vx.append(V[index] * np.sin(ALFA[index]))
+                self.vy.append(V[index] * np.cos(ALFA[index]))
+                #print("index = {}".format(index))
+            else:
+                self.vx.append(V[index] * np.sin(ALFA[index-1]))
+                self.vy.append(V[index] * np.cos(ALFA[index-1]))
+                #print("index = {}".format(index))
     def making_target_value(self, list_of_bezier1, list_of_bezier2, list_of_bezier3, list_of_bezier4):
         nplist_of_bezier1, list_of_bezier1 = self.bez.bezier_making(list_of_bezier1)
         nplist_of_bezier2, list_of_bezier2 = self.bez.bezier_making(list_of_bezier2)
@@ -106,7 +124,11 @@ class target_value_class(object):
     def making_target_value_test_red(self):
         #bez = bezier(80)
         #bez5 = bezier(300)
-
+        ########################################################################
+        ########################################################################
+        ######################     maiking X REF     ###########################
+        ########################################################################
+        ########################################################################
         new_index_for_bezier = []
         theta = 0#np.pi/4
         #set_start_point
@@ -120,10 +142,14 @@ class target_value_class(object):
         ########################################################################
         '''#####################################################################
 
+        ############################     2nd     ###############################
+        ################################# O ####################################
         list_of_bezier_set1 = np.array([[0,0],[-1*(1.225+ssp[0]),0.7+ssp[1]],[-1*(1.95+ssp[0]),0.7+ssp[1]],[-1*(1.95+ssp[0]),2+ssp[1]]], dtype=np.float)
         list_of_bezier_set2 = np.array([[-1*(1.95+ssp[0]),2.000+ssp[1]],[-1*(1.95+ssp[0]),2.500+ssp[1]],[-1*(0.51+ssp[0]),3+ssp[1]],[-1*(0.51+ssp[0]),3.5+ssp[1]]], dtype=np.float)
         list_of_bezier_set3 = np.array([[-1*(0.51+ssp[0]),3.5+ssp[1]],[-1*(0.51+ssp[0]),4+ssp[1]],[-1*(1.95+ssp[0]),4.5+ssp[1]],[-1*(1.95+ssp[0]),5+ssp[1]]], dtype=np.float)
         list_of_bezier_set4 = np.array([[-1*(1.95+ssp[0]),5+ssp[1]],[-1*(1.95+ssp[0]),5.5+ssp[1]],[-1*(1.225+ssp[0]),5.5+ssp[1]],[-1*(1.225+ssp[0]),6.5+ssp[1]]], dtype=np.float)
+        ########################################################################
+        ########################################################################
 
         nplist_of_bezier1, list_of_bezier1 = self.bez.bezier_making(list_of_bezier_set1)
         nplist_of_bezier2, list_of_bezier2 = self.bez.bezier_making(list_of_bezier_set2)
@@ -170,5 +196,40 @@ class target_value_class(object):
         #self.arg.arrange(npLIST.T[0], npLIST.T[1], TVP_of_S)
         new_index_for_bezier, len_new_index_for_bezier = self.arg.arrange(npLIST.T[0], npLIST.T[1], TVP_of_S)
         npNEW_LOB, NEW_LOB = self.bez.new_bezier_plt(LIST, new_index_for_bezier, len_new_index_for_bezier)
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        ########################################################################
+
+
+
+        ########################################################################
+        ########################################################################
+        ######################     making V REF     ############################
+        ########################################################################
+        ########################################################################
+        self.alfa = self.tvp.making_angle(npNEW_LOB,len(npNEW_LOB))
+        self.making_vx_and_vy(self.tvp.get_V(),self.alfa,len(npNEW_LOB))
+        with open('csv_item/vx_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(self.vx)
+        with open('csv_item/vy_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(self.vy)
+        with open('csv_item/alfa_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(self.alfa)
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        ########################################################################
+
+
+
+
+
+
 
         return npLOB, LOB,npNEW_LOB, NEW_LOB
