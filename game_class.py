@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 class game_class(object):
     """docstring for game_class."""
@@ -140,8 +141,41 @@ class game_class(object):
 
     def run(self):
         #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
-        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_read()
-        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker=".", color="#F7BE81")
-    	plt.axis("equal")
-    	plt.grid((True))
-    	plt.show()
+        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_red()
+        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker="o", color="#F5A9A9")
+        ########################################################################
+        ########################################################################
+        ###########################     model     ##############################
+        ########################################################################
+        #'''
+        ax = plt.axes()
+        COUNT = np.arange(start=0, stop=685, step=1, dtype= int)
+        ssp=[-0.5,-0.5]
+        for count in COUNT:
+            r = patches.Rectangle(xy=(npNEW_LOB.T[0][count] -0.35,npNEW_LOB.T[1][count] -0.35), width=0.7, height=0.7, ec='#F5A9A9', fill=False)
+            ax.add_patch(r)
+            #c = patches.Circle(xy=(npNEW_LOB.T[0][count],npNEW_LOB.T[1][count]), radius=0.4, ec='#F5A9A9',fill=False)
+            #ax.add_patch(c)
+        ############################     field     #############################
+        ########################################################################
+        sotowaku = patches.Rectangle(xy=(-13.3+0.5,-0.5), width=13.3, height=10, ec='#FAAC58',fill=False)
+        ax.add_patch(sotowaku)
+        forest = patches.Rectangle(xy=(-2.45+0.5,-0.5), width=2.45, height=8, ec='#FAAC58',fill=False)
+        ax.add_patch(forest)
+
+
+        d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(d)
+        e = patches.Circle(xy=(-1*(1.225+ssp[0]),3.5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(e)
+        f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(f)
+        #'''
+        ########################################################################
+        ########################################################################
+        ########################################################################
+
+
+        plt.axis("equal")
+        plt.grid(True)
+        plt.show()
