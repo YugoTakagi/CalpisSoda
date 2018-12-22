@@ -197,12 +197,17 @@ class game_class(object):
         y=0
         vx=self.target.get_vx()
         vy=self.target.get_vy()
+        alfa=self.target.get_alfa()
         for index in INDEX:
             x = x + vx[index] * 0.008
             y = y + vy[index] * 0.008
             X.append(x)
             Y.append(y)
-            img = plt.plot(X,Y,marker="o",color="#FAAC58")
+
+            vehi = np.matrix([[x+0.4, x+0.4, x-0.4, x-0.4],[y+0.4, y-0.4, y-0.4, y+0.4]])
+            Rot = np.matrix([[np.cos(alfa[index]),-np.sin(alfa[index])],[np.sin(alfa[index]),np.cos(alfa[index])]])
+            newvehi = Rot * vehi
+            img = plt.plot(X,Y,marker="o",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker="o",color="#FAAC58")
             plt.title("sample animation")
             plt.axis("equal")
             plt.grid(True)
