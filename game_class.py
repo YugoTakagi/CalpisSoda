@@ -2,6 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
+#'''
+#%matplotlib notebook
+import matplotlib.animation as animation
+from matplotlib import animation
+#'''
 class game_class(object):
     """docstring for game_class."""
     def __init__(self, target, state, robot):
@@ -183,6 +188,8 @@ class game_class(object):
         plt.grid(True)
         plt.show()
         #'''#FF
+        fig = plt.figure()
+        ims = []
         INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
         X = []
         Y = []
@@ -195,11 +202,13 @@ class game_class(object):
             y = y + vy[index] * 0.008
             X.append(x)
             Y.append(y)
-        plt.plot(X,Y,marker="o")
-
+            img = plt.plot(X,Y,marker="o",color="#FAAC58")
+            plt.title("sample animation")
+            plt.axis("equal")
+            plt.grid(True)
+            ims.append(img)
         #plt.pause(0.01)
-        plt.axis("equal")
-        plt.grid(True)
+        ani = animation.ArtistAnimation(fig, ims, interval=8)
         plt.show()
         #'''
     def run_FF(self):

@@ -5,7 +5,7 @@ import csv
 
 from scipy import integrate
 from bezier_class import bezier
-from ..color_class import pycolor
+#from color_class import pycolor
 '''
 print pycolor.RED + "RED TEXT" + pycolor.END
 '''
@@ -100,7 +100,7 @@ class trapezoidal_velocity_profile(object):
         p2 = 0.0
         p3 = 0.0
         if T2<0:
-            print pycolor.RED + "T2 error" +pycolor.END
+            #print pycolor.RED + "T2 error" +pycolor.END
             print("T2 = {}".format(T2))
             print("self.p_max = {}".format(self.p_max))
 
@@ -125,7 +125,8 @@ class trapezoidal_velocity_profile(object):
                 p3 = -A*(t-(T1+T2))**2/2.0 +A*T1*(t-(T1+T2)) +p2
                 P.append(p3)
             else:
-                print pycolor.RED + "a-t error" +pycolor.END
+                #print pycolor.RED + "a-t error" +pycolor.END
+                print("a-t error")
         Vx = []
         Vy = []
         linspace_time = np.linspace(0, len(self.time_count)-1, len(self.time_count), dtype = int)
@@ -148,17 +149,3 @@ class trapezoidal_velocity_profile(object):
         plt.plot(time,P,color ="Green", marker="o")
         print('+--+-end making_TVP-+--+\n')
         return P
-        '''
-        header = [['time'], ['a'], ['v'], ['p'],['theta'],['Vx'],['Vy']]
-        with open('sample.csv', 'w') as f:
-            writer = csv.writer(f)  # writer
-            writer.writerows(header)
-            writer.writerow(time)
-            writer.writerow(Ac)
-            writer.writerow(V)
-            writer.writerow(P)
-            writer.writerow(list_of_theta)
-            writer.writerow(Vx)
-            writer.writerow(Vy)
-            #writer.writerow(sai)
-        #'''
