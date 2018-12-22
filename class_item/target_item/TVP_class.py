@@ -112,7 +112,7 @@ class trapezoidal_velocity_profile(object):
                 P.append(p2)
             elif t<= T:
                 Ac.append(-A)
-                v3 = -A*(t-(T1+T2))/2.0 +v2
+                v3 = -A*(t-(T1+T2)) +v2
                 V.append(v3)
                 p3 = -A*(t-(T1+T2))**2/2.0 +A*T1*(t-(T1+T2)) +p2
                 P.append(p3)
