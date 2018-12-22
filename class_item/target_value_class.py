@@ -5,6 +5,7 @@ import csv
 
 class target_value_class(object):
     """docstring for target_value_class."""
+    V = []
     vx = []
     vy = []
     alfa = []
@@ -16,6 +17,8 @@ class target_value_class(object):
         self.bez = bez
         self.tvp = tvp
         self.arg = arg
+    def get_V(self):
+        return self.V
     def get_vx(self):
         return self.vx
     def get_vy(self):
@@ -23,6 +26,7 @@ class target_value_class(object):
     def get_alfa(self):
         return self.alfa
     def making_vx_and_vy(self,V,ALFA,time):
+        self.V = V
         arange_time = np.arange(start=0, stop=time-1, step=1, dtype= int)
         for index in arange_time:#linspace_time:
             if (index - 1) <= 0:
