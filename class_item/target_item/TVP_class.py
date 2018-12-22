@@ -60,7 +60,10 @@ class trapezoidal_velocity_profile(object):
             else:
                 dx = x_ref[index] - x_ref[index-1]
                 dy = y_ref[index] - y_ref[index-1]
-            self.alfa.append(np.arctan(dx/dy))
+            if dy>0:
+                self.alfa.append(np.arctan(dx/dy))
+            else:
+                self.alfa.append(np.pi - np.arctan(-dx/dy))
         return self.alfa
     def making_TVP(self, x_ref, y_ref, vell_want, vell_start, vell_end, P_start, time_start):
         print('+--+-start making_TVP-+--+')
