@@ -204,9 +204,11 @@ class game_class(object):
             X.append(x)
             Y.append(y)
 
-            vehi = np.matrix([[x+0.4, x+0.4, x-0.4, x-0.4],[y+0.4, y-0.4, y-0.4, y+0.4]])
-            Rot = np.matrix([[np.cos(alfa[index]),-np.sin(alfa[index])],[np.sin(alfa[index]),np.cos(alfa[index])]])
-            newvehi = Rot * vehi
+            #vehi = np.matrix([[0.4, 0.4, -0.4, -0.4],[0.4, -0.4, -0.4, 0.4]])
+            vehi = np.matrix([[0, 0.4, 0.4, -0.4, -0.4, 0],[0.8, 0.4, -0.4, -0.4, 0.4, 0.8]])
+            Rot = np.matrix([[np.cos(-alfa[index]),-np.sin(-alfa[index])],[np.sin(-alfa[index]),np.cos(-alfa[index])]])
+            STATE = [[x],[y]]
+            newvehi = Rot * vehi + STATE
             img = plt.plot(X,Y,marker="o",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker="o",color="#FAAC58")
             plt.title("sample animation")
             plt.axis("equal")
