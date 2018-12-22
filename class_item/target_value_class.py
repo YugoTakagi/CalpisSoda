@@ -22,8 +22,8 @@ class target_value_class(object):
         return self.vy
     def get_alfa(self):
         return self.alfa
-    def making_vx_and_vy(self,V,ALFA,time_count):
-        arange_time = np.arange(start=0.0, stop=time_count-1, step=1, dtype= int)
+    def making_vx_and_vy(self,V,ALFA,time):
+        arange_time = np.arange(start=0, stop=time-1, step=1, dtype= int)
         for index in arange_time:#linspace_time:
             if (index - 1) <= 0:
                 self.vx.append(V[index] * np.sin(ALFA[index]))

@@ -179,16 +179,10 @@ class game_class(object):
         ########################################################################
         ########################################################################
         ########################################################################
-
-
         plt.axis("equal")
         plt.grid(True)
         plt.show()
-
-
-
-
-
+        #'''#FF
         INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
         X = []
         Y = []
@@ -207,5 +201,6 @@ class game_class(object):
         plt.axis("equal")
         plt.grid(True)
         plt.show()
+        #'''
     def run_FF(self):
         pass
