@@ -69,7 +69,7 @@ class target_value_class(object):
         npLOB = np.array(LOB)
         plt.plot(npLOB.T[0],npLOB.T[1], marker="o", color="#4278C5")
 
-        list_of_bridge_set = np.array([[1.225+ssp[0],6.5+ssp[1]],[1.225+ssp[0],6.5+ssp[1]],[1.225+ssp[0],6.5+ssp[1] +1.0],[1.225+ssp[0],6.5+ssp[1] +1.0]], dtype=np.float)
+        list_of_bridge_set = np.array([[1.225+ssp[0],6.5+ssp[1]],[1.225+ssp[0],6.5+ssp[1]],[1.225+ssp[0],6.5+ssp[1] +1.5],[1.225+ssp[0],6.5+ssp[1] +1.5]], dtype=np.float)
         nplist_of_bridge, list_of_bridge = self.bez.bezier_making(list_of_bridge_set)
         plt.plot(nplist_of_bridge.T[0],nplist_of_bridge.T[1], marker="o", color="#4278C5")
 
@@ -128,7 +128,7 @@ class target_value_class(object):
         npLOB = np.array(LOB)
         plt.plot(npLOB.T[0],npLOB.T[1], marker="o", color="#FA5858")
 
-        list_of_bridge_set = np.array([[-1*(1.225+ssp[0]),6.5+ssp[1]],[-1*(1.225+ssp[0]),6.5+ssp[1]],[-1*(1.225+ssp[0]),6.5+ssp[1] +1.0],[-1*(1.225+ssp[0]),6.5+ssp[1] +1.0]], dtype=np.float)
+        list_of_bridge_set = np.array([[-1*(1.225+ssp[0]),6.5+ssp[1]],[-1*(1.225+ssp[0]),6.5+ssp[1]],[-1*(1.225+ssp[0]),6.5+ssp[1] +1.5],[-1*(1.225+ssp[0]),6.5+ssp[1] +1.5]], dtype=np.float)
         nplist_of_bridge, list_of_bridge = self.bez.bezier_making(list_of_bridge_set)
         plt.plot(nplist_of_bridge.T[0],nplist_of_bridge.T[1], marker="o", color="#FA5858")
 
@@ -144,7 +144,7 @@ class target_value_class(object):
         LIST = []
         LIST.extend(LOB)
         LIST.extend(list_of_bridge)
-        LIST.extend(list_of_bezier5)
+        #LIST.extend(list_of_bezier5)
         npLIST = np.array(LIST)
         #print('npLIST = {}'.format(npLIST))
         plt.plot(npLIST.T[0],npLIST.T[1], marker="o", color="#F7BE81")
