@@ -138,18 +138,17 @@ class game_class(object):
                     plt.show
         else:
             print("model error")
-
     def run(self):
         #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
         npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_red()
-        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker="o", color="#F5A9A9")
+        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker="o", color="#B40404")
         ########################################################################
         ########################################################################
         ###########################     model     ##############################
         ########################################################################
         #'''
         ax = plt.axes()
-        COUNT = np.arange(start=0, stop=685, step=1, dtype= int)
+        COUNT = np.arange(start=0, stop=1054, step=1, dtype= int)
         ssp=[-0.5,-0.5]
         for count in COUNT:
             r = patches.Rectangle(xy=(npNEW_LOB.T[0][count] -0.35,npNEW_LOB.T[1][count] -0.35), width=0.7, height=0.7, ec='#F5A9A9', fill=False)
@@ -162,6 +161,12 @@ class game_class(object):
         ax.add_patch(sotowaku)
         forest = patches.Rectangle(xy=(-2.45+0.5,-0.5), width=2.45, height=8, ec='#FAAC58',fill=False)
         ax.add_patch(forest)
+        bridge = patches.Rectangle(xy=(-1.725 +0.5, 6.5 -0.5), width=1, height=1.5, ec='#FAAC58',fill=False)
+        ax.add_patch(bridge)
+        bri1 = patches.Circle(xy=(-1.725 +0.5, 6.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri1)
+        bri2 = patches.Circle(xy=(-1.725 +0.5, 6.5+1.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri2)
 
 
         d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)

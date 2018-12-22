@@ -111,11 +111,20 @@ class target_value_class(object):
         theta = 0#np.pi/4
         #set_start_point
         ssp=[-0.5,-0.5]
-
+        '''#########################    1st    #################################
+        ################################ X #####################################
         list_of_bezier_set1 = np.array([[0,0],[-1*(1.225+ssp[0]),0.7+ssp[1]],[-1*(1.725+ssp[0]),0.7+ssp[1]],[-1*(1.725+ssp[0]),2+ssp[1]]], dtype=np.float)
         list_of_bezier_set2 = np.array([[-1*(1.725+ssp[0]),2.000+ssp[1]],[-1*(1.725+ssp[0]),2.500+ssp[1]],[-1*(0.775+ssp[0]),3+ssp[1]],[-1*(0.725+ssp[0]),3.5+ssp[1]]], dtype=np.float)
         list_of_bezier_set3 = np.array([[-1*(0.725+ssp[0]),3.5+ssp[1]],[-1*(0.775+ssp[0]),4+ssp[1]],[-1*(1.725+ssp[0]),4.5+ssp[1]],[-1*(1.725+ssp[0]),5+ssp[1]]], dtype=np.float)
         list_of_bezier_set4 = np.array([[-1*(1.725+ssp[0]),5+ssp[1]],[-1*(1.725+ssp[0]),5.5+ssp[1]],[-1*(1.225+ssp[0]),6+ssp[1]],[-1*(1.225+ssp[0]),6.5+ssp[1]]], dtype=np.float)
+        ########################################################################
+        '''#####################################################################
+
+        list_of_bezier_set1 = np.array([[0,0],[-1*(1.225+ssp[0]),0.7+ssp[1]],[-1*(1.95+ssp[0]),0.7+ssp[1]],[-1*(1.95+ssp[0]),2+ssp[1]]], dtype=np.float)
+        list_of_bezier_set2 = np.array([[-1*(1.95+ssp[0]),2.000+ssp[1]],[-1*(1.95+ssp[0]),2.500+ssp[1]],[-1*(0.51+ssp[0]),3+ssp[1]],[-1*(0.51+ssp[0]),3.5+ssp[1]]], dtype=np.float)
+        list_of_bezier_set3 = np.array([[-1*(0.51+ssp[0]),3.5+ssp[1]],[-1*(0.51+ssp[0]),4+ssp[1]],[-1*(1.95+ssp[0]),4.5+ssp[1]],[-1*(1.95+ssp[0]),5+ssp[1]]], dtype=np.float)
+        list_of_bezier_set4 = np.array([[-1*(1.95+ssp[0]),5+ssp[1]],[-1*(1.95+ssp[0]),5.5+ssp[1]],[-1*(1.225+ssp[0]),5.5+ssp[1]],[-1*(1.225+ssp[0]),6.5+ssp[1]]], dtype=np.float)
+
         nplist_of_bezier1, list_of_bezier1 = self.bez.bezier_making(list_of_bezier_set1)
         nplist_of_bezier2, list_of_bezier2 = self.bez.bezier_making(list_of_bezier_set2)
         nplist_of_bezier3, list_of_bezier3 = self.bez.bezier_making(list_of_bezier_set3)
@@ -132,7 +141,8 @@ class target_value_class(object):
         nplist_of_bridge, list_of_bridge = self.bez.bezier_making(list_of_bridge_set)
         plt.plot(nplist_of_bridge.T[0],nplist_of_bridge.T[1], marker="o", color="#FA5858")
 
-        list_of_bezier_set5 = np.array([[-1*(1.225+ssp[0]), 6.5+ssp[1] +1.0],[-1*(1.225+ssp[0]), 6.5+ssp[1] +1.0 +3],[-1*(1.225+ssp[0]+5),6.5+ssp[1] +0.2],[-1*(1.225+ssp[0] +1.25 +9.95 +2.0), 6.5+ssp[1] +0.4]], dtype=np.float)
+        list_of_bezier_set5 = np.array([[-1*(1.225+ssp[0]), 6.5+ssp[1] +1.5],[-1*(1.225+ssp[0]), 6.5+ssp[1] +1.5 +2],[-1*(1.225+ssp[0]+1.25),6.5+ssp[1] +1.5 +0.4],[-1*(1.225+ssp[0] +1.25 +2.0 +0.97), 6.5+ssp[1] +1.5 +0.5]], dtype=np.float)
+        #farst#list_of_bezier_set5 = np.array([[-1*(1.225+ssp[0]), 6.5+ssp[1] +1.0],[-1*(1.225+ssp[0]), 6.5+ssp[1] +1.0 +3],[-1*(1.225+ssp[0]+5),6.5+ssp[1] +0.2],[-1*(1.225+ssp[0] +1.25 +9.95 +2.0), 6.5+ssp[1] +0.4]], dtype=np.float)
         #nplist_of_bezier5, list_of_bezier5 = bez5.bezier_making(list_of_bezier_set5)
         nplist_of_bezier5, list_of_bezier5 = self.bez.bezier_making(list_of_bezier_set5)
         plt.plot(nplist_of_bezier5.T[0],nplist_of_bezier5.T[1], marker="o", color="#FA5858")
@@ -144,7 +154,7 @@ class target_value_class(object):
         LIST = []
         LIST.extend(LOB)
         LIST.extend(list_of_bridge)
-        #LIST.extend(list_of_bezier5)
+        LIST.extend(list_of_bezier5)
         npLIST = np.array(LIST)
         #print('npLIST = {}'.format(npLIST))
         plt.plot(npLIST.T[0],npLIST.T[1], marker="o", color="#F7BE81")
