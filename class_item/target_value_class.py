@@ -1,4 +1,4 @@
-from color_class import pycolor as pc
+#from color_class import pycolor as pc
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
@@ -53,12 +53,11 @@ class target_value_class(object):
         theta = 0#np.pi/4
     	#set_start_point
         ssp=[-0.5,-0.5]
-
-    	list_of_bezier_set1 = np.array([[0,0],[1.225+ssp[0],0.7+ssp[1]],[1.725+ssp[0],0.7+ssp[1]],[1.725+ssp[0],2+ssp[1]]], dtype=np.float)
-    	list_of_bezier_set2 = np.array([[1.725+ssp[0],2.000+ssp[1]],[1.725+ssp[0],2.500+ssp[1]],[0.775+ssp[0],3+ssp[1]],[0.775+ssp[0],3.5+ssp[1]]], dtype=np.float)
-    	list_of_bezier_set3 = np.array([[0.775+ssp[0],3.5+ssp[1]],[0.775+ssp[0],4+ssp[1]],[1.725+ssp[0],4.5+ssp[1]],[1.725+ssp[0],5+ssp[1]]], dtype=np.float)
-    	list_of_bezier_set4 = np.array([[1.725+ssp[0],5+ssp[1]],[1.725+ssp[0],5.5+ssp[1]],[1.225+ssp[0],6+ssp[1]],[1.225+ssp[0],6.5+ssp[1]]], dtype=np.float)
-    	nplist_of_bezier1, list_of_bezier1 = self.bez.bezier_making(list_of_bezier_set1)
+        list_of_bezier_set1 = np.array([[0,0],[1.225+ssp[0],0.7+ssp[1]],[1.725+ssp[0],0.7+ssp[1]],[1.725+ssp[0],2+ssp[1]]], dtype=np.float)
+        list_of_bezier_set2 = np.array([[1.725+ssp[0],2.000+ssp[1]],[1.725+ssp[0],2.500+ssp[1]],[0.775+ssp[0],3+ssp[1]],[0.775+ssp[0],3.5+ssp[1]]], dtype=np.float)
+        list_of_bezier_set3 = np.array([[0.775+ssp[0],3.5+ssp[1]],[0.775+ssp[0],4+ssp[1]],[1.725+ssp[0],4.5+ssp[1]],[1.725+ssp[0],5+ssp[1]]], dtype=np.float)
+        list_of_bezier_set4 = np.array([[1.725+ssp[0],5+ssp[1]],[1.725+ssp[0],5.5+ssp[1]],[1.225+ssp[0],6+ssp[1]],[1.225+ssp[0],6.5+ssp[1]]], dtype=np.float)
+        nplist_of_bezier1, list_of_bezier1 = self.bez.bezier_making(list_of_bezier_set1)
         nplist_of_bezier2, list_of_bezier2 = self.bez.bezier_making(list_of_bezier_set2)
         nplist_of_bezier3, list_of_bezier3 = self.bez.bezier_making(list_of_bezier_set3)
         nplist_of_bezier4, list_of_bezier4 = self.bez.bezier_making(list_of_bezier_set4)
@@ -83,16 +82,16 @@ class target_value_class(object):
         plt.show()
 
 
-    	LIST = []
-    	LIST.extend(LOB)
-    	LIST.extend(list_of_bridge)
-    	LIST.extend(list_of_bezier5)
-    	npLIST = np.array(LIST)
-    	#print('npLIST = {}'.format(npLIST))
-    	plt.plot(npLIST.T[0],npLIST.T[1], marker="o", color="#F7BE81")
-    	plt.axis("equal")
-    	plt.grid((True))
-    	plt.show()
+        LIST = []
+        LIST.extend(LOB)
+        LIST.extend(list_of_bridge)
+        LIST.extend(list_of_bezier5)
+        npLIST = np.array(LIST)
+        #print('npLIST = {}'.format(npLIST))
+        plt.plot(npLIST.T[0],npLIST.T[1], marker="o", color="#F7BE81")
+        plt.axis("equal")
+        plt.grid((True))
+        plt.show()
 
         self.tvp.making_curve_length(npLIST.T[0], npLIST.T[1])
         TVP_of_S = self.tvp.making_TVP(npLIST.T[0], npLIST.T[1], 2.0, 0.0, 0.0, 0.0, 0.0)

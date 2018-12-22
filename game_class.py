@@ -154,8 +154,10 @@ class game_class(object):
         COUNT = np.arange(start=0, stop=1535, step=1, dtype= int)
         ssp=[-0.5,-0.5]
         for count in COUNT:
-            c = patches.Circle(xy=(npNEW_LOB.T[0][count],npNEW_LOB.T[1][count]), radius=0.4, ec='#F5A9A9',fill=False)
-            ax.add_patch(c)
+            r = patches.Rectangle(xy=(npNEW_LOB.T[0][count] -0.4,npNEW_LOB.T[1][count] -0.4), width=0.8, height=0.8, ec='#F5A9A9', fill=False)
+            ax.add_patch(r)
+            #c = patches.Circle(xy=(npNEW_LOB.T[0][count],npNEW_LOB.T[1][count]), radius=0.4, ec='#F5A9A9',fill=False)
+            #ax.add_patch(c)
 
         d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
         ax.add_patch(d)
