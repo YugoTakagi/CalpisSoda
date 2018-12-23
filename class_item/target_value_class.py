@@ -183,6 +183,7 @@ class target_value_class(object):
         plt.plot(nplist_of_bezier5.T[0],nplist_of_bezier5.T[1], marker="o", color="#FA5858")
         plt.axis("equal")
         plt.grid((True))
+        plt.title("ba ra ba ra")
         plt.show()
 
 
@@ -195,6 +196,7 @@ class target_value_class(object):
         plt.plot(npLIST.T[0],npLIST.T[1], marker="o", color="#F7BE81")
         plt.axis("equal")
         plt.grid((True))
+        plt.title("LIST")
         plt.show()
 
         self.tvp.making_curve_length(npLIST.T[0], npLIST.T[1])

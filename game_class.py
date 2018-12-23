@@ -147,6 +147,7 @@ class game_class(object):
         #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
         npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_red()
         plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker="o", color="#B40404")
+        plt.title("already arrange")
         ########################################################################
         ########################################################################
         ###########################     model     ##############################

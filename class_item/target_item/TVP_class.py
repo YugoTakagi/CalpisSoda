@@ -144,8 +144,10 @@ class trapezoidal_velocity_profile(object):
                 print("index = {}".format(index))
         #'''
         time = np.arange(start=0.0+time_start, stop=self.time_end+time_start, step=0.008, dtype= np.float)
-        plt.plot(time,Ac,color ="red", marker="o")#marker=".", ls=""
-        plt.plot(time,self.V,color ="#FE9A2E", marker="o")#linewidth=3
-        plt.plot(time,P,color ="Green", marker="o")
+        plt.plot(time,Ac,color ="red", marker="o",label='A')#marker=".", ls=""
+        plt.plot(time,self.V,color ="#FE9A2E", marker="o",label='V')#linewidth=3
+        plt.plot(time,P,color ="Green", marker="o",label='S')
+        plt.title("Trapezoidal Velocity Profile")
+        plt.legend()
         print('+--+-end making_TVP-+--+\n')
         return P
