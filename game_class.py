@@ -207,7 +207,7 @@ class game_class(object):
         vy=self.target.get_vy()
         alfa=self.target.get_alfa()
         V = self.target.get_V()
-        print("V = {}".format(V))
+        #print("V = {}".format(V))
         for index in INDEX:
             x = x + vx[index] * 0.008
             y = y + vy[index] * 0.008
@@ -219,7 +219,7 @@ class game_class(object):
             Rot = np.matrix([[np.cos(-alfa[index]),-np.sin(-alfa[index])],[np.sin(-alfa[index]),np.cos(-alfa[index])]])
             STATE = [[x],[y]]
             newvehi = Rot * vehi + STATE
-            img = plt.plot(X,Y,marker=".",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker=".",color="#FAAC58")
+            img = plt.plot(X,Y,marker=".",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker="p",color="#FAAC58")
 
             plt.title("V = {}m/s".format(V[index]))
             #print("V = {}m/s".format(V[index]))
