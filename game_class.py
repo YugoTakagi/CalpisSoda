@@ -187,7 +187,14 @@ class game_class(object):
         plt.axis("equal")
         plt.grid(True)
         plt.show()
-        #'''#FF
+        INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
+        #INDEX,len_INDEX = self.target.get_new_index_set()
+        '''
+        V = self.target.get_V()
+        for index in INDEX:
+            print("V[{}] = {}m/s".format(index,V[index]))
+        '''
+        '''#FF
         fig = plt.figure()
         ims = []
         INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
@@ -199,7 +206,7 @@ class game_class(object):
         vy=self.target.get_vy()
         alfa=self.target.get_alfa()
         V = self.target.get_V()
-        #print("V = {}".format(V))
+        print("V = {}".format(V))
         for index in INDEX:
             x = x + vx[index] * 0.008
             y = y + vy[index] * 0.008
@@ -211,16 +218,17 @@ class game_class(object):
             Rot = np.matrix([[np.cos(-alfa[index]),-np.sin(-alfa[index])],[np.sin(-alfa[index]),np.cos(-alfa[index])]])
             STATE = [[x],[y]]
             newvehi = Rot * vehi + STATE
-            img = plt.plot(X,Y,marker="o",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker=".",color="#FAAC58")
+            img = plt.plot(X,Y,marker=".",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker=".",color="#FAAC58")
 
-            #plt.title("V = {}".format(V[index]))
+            plt.title("V = {}m/s".format(V[index]))
+            #print("V = {}m/s".format(V[index]))
             #plt.title("V = "+ str(V[index])[:4])
             plt.axis("equal")
             plt.grid(True)
             ims.append(img)
         #plt.pause(0.01)
         ani = animation.ArtistAnimation(fig, ims, interval=8)
-
+        ####
         ax = plt.axes()
         ############################     field     #############################
         ########################################################################
@@ -242,9 +250,9 @@ class game_class(object):
         ax.add_patch(e)
         f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
         ax.add_patch(f)
+        ########################################################################
+        ########################################################################
         #'''
-        ########################################################################
-        ########################################################################
 
         plt.show()
         #ani.save("output.gif", writer="imagemagick")

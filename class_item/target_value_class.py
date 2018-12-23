@@ -13,6 +13,9 @@ class target_value_class(object):
     x = []
     y = []
     theta = []
+
+    new_index_for_bezier=[]
+    len_new_index_for_bezier=0
     def __init__(self, bez, tvp, arg):
         self.bez = bez
         self.tvp = tvp
@@ -25,6 +28,8 @@ class target_value_class(object):
         return self.vy
     def get_alfa(self):
         return self.alfa
+    def get_new_index_set(self):
+        return self.new_index_for_bezier, self.len_new_index_for_bezier
     def making_vx_and_vy(self,V,ALFA,time):
         self.V = V
         arange_time = np.arange(start=0, stop=time-1, step=1, dtype= int)
@@ -64,8 +69,8 @@ class target_value_class(object):
         self.tvp.deside()
         plt.show()
 
-        new_index_for_bezier, len_new_index_for_bezier = self.arg.arrange(npLOB.T[0], npLOB.T[1], TVP_of_S)
-        npNEW_LOB, NEW_LOB = self.bez.new_bezier_plt(LOB, new_index_for_bezier, len_new_index_for_bezier)
+        self.new_index_for_bezier, self.len_new_index_for_bezier = self.arg.arrange(npLOB.T[0], npLOB.T[1], TVP_of_S)
+        npNEW_LOB, NEW_LOB = self.bez.new_bezier_plt(LOB, self.new_index_for_bezier, self.len_new_index_for_bezier)
 
         return npLOB, LOB,npNEW_LOB, NEW_LOB
     def making_target_value_test_blue(self):
@@ -199,6 +204,7 @@ class target_value_class(object):
 
         #self.arg.arrange(npLIST.T[0], npLIST.T[1], TVP_of_S)
         new_index_for_bezier, len_new_index_for_bezier = self.arg.arrange(npLIST.T[0], npLIST.T[1], TVP_of_S)
+        #print("new_index_for_bezier = {}".format(new_index_for_bezier))
         npNEW_LOB, NEW_LOB = self.bez.new_bezier_plt(LIST, new_index_for_bezier, len_new_index_for_bezier)
         ########################################################################
         ########################################################################
