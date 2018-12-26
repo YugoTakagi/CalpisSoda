@@ -300,3 +300,245 @@ class game_class(object):
             writer = csv.writer(f)  # writer
             writer.writerow(alfa)
         plt.show()
+    def run_video_forest(self):
+        #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
+        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_video_forest_red()
+        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker="o", color="#B40404")
+        plt.title("already arrange")
+        ########################################################################
+        ########################################################################
+        ###########################     model     ##############################
+        ########################################################################
+        #'''
+        ax = plt.axes()
+        COUNT = np.arange(start=0, stop=646, step=1, dtype= int)
+        ssp=[-0.5,-0.5]
+        for count in COUNT:
+            r = patches.Rectangle(xy=(npNEW_LOB.T[0][count] -0.35,npNEW_LOB.T[1][count] -0.35), width=0.7, height=0.7, ec='#F5A9A9', fill=False)
+            ax.add_patch(r)
+            #c = patches.Circle(xy=(npNEW_LOB.T[0][count],npNEW_LOB.T[1][count]), radius=0.4, ec='#F5A9A9',fill=False)
+            #ax.add_patch(c)
+        ############################     field     #############################
+        ########################################################################
+        sotowaku = patches.Rectangle(xy=(-13.3+0.5,-0.5), width=13.3, height=10, ec='#FAAC58',fill=False)
+        ax.add_patch(sotowaku)
+        forest = patches.Rectangle(xy=(-2.45+0.5,-0.5), width=2.45, height=8, ec='#FAAC58',fill=False)
+        ax.add_patch(forest)
+        bridge = patches.Rectangle(xy=(-1.725 +0.5, 6.5 -0.5), width=1, height=1.5, ec='#FAAC58',fill=False)
+        ax.add_patch(bridge)
+        bri1 = patches.Circle(xy=(-1.725 +0.5, 6.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri1)
+        bri2 = patches.Circle(xy=(-1.725 +0.5, 6.5+1.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri2)
+
+
+        d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(d)
+        e = patches.Circle(xy=(-1*(1.225+ssp[0]),3.5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(e)
+        f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(f)
+        #'''
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        plt.axis("equal")
+        plt.grid(True)
+        plt.show()
+        INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
+        #INDEX,len_INDEX = self.target.get_new_index_set()
+        '''
+        V = self.target.get_V()
+        for index in INDEX:
+            print("V[{}] = {}m/s".format(index,V[index]))
+        '''
+        '''#FF
+        fig = plt.figure()
+        ims = []
+        INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
+        X = []
+        Y = []
+        x=0
+        y=0
+        vx=self.target.get_vx()
+        vy=self.target.get_vy()
+        alfa=self.target.get_alfa()
+        V = self.target.get_V()
+        #print("V = {}".format(V))
+        for index in INDEX:
+            x = x + vx[index] * 0.008
+            y = y + vy[index] * 0.008
+            X.append(x)
+            Y.append(y)
+
+            #vehi = np.matrix([[0.4, 0.4, -0.4, -0.4],[0.4, -0.4, -0.4, 0.4]])
+            vehi = np.matrix([[0, 0.35, 0.35, -0.35, -0.35, 0],[0.7, 0.35, -0.35, -0.35, 0.35, 0.7]])
+            Rot = np.matrix([[np.cos(-alfa[index]),-np.sin(-alfa[index])],[np.sin(-alfa[index]),np.cos(-alfa[index])]])
+            STATE = [[x],[y]]
+            newvehi = Rot * vehi + STATE
+            img = plt.plot(X,Y,marker=".",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker="p",color="#FAAC58")
+
+            plt.title("V = {}m/s".format(V[index]))
+            #print("V = {}m/s".format(V[index]))
+            #plt.title("V = "+ str(V[index])[:4])
+            plt.axis("equal")
+            plt.grid(True)
+            ims.append(img)
+        #plt.pause(0.01)
+        ani = animation.ArtistAnimation(fig, ims, interval=1)
+        ####
+        ax = plt.axes()
+        ############################     field     #############################
+        ########################################################################
+        sotowaku = patches.Rectangle(xy=(-13.3+0.5,-0.5), width=13.3, height=10, ec='#FAAC58',fill=False)
+        ax.add_patch(sotowaku)
+        forest = patches.Rectangle(xy=(-2.45+0.5,-0.5), width=2.45, height=8, ec='#FAAC58',fill=False)
+        ax.add_patch(forest)
+        bridge = patches.Rectangle(xy=(-1.725 +0.5, 6.5 -0.5), width=1, height=1.5, ec='#FAAC58',fill=False)
+        ax.add_patch(bridge)
+        bri1 = patches.Circle(xy=(-1.725 +0.5, 6.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri1)
+        bri2 = patches.Circle(xy=(-1.725 +0.5, 6.5+1.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri2)
+
+
+        d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(d)
+        e = patches.Circle(xy=(-1*(1.225+ssp[0]),3.5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(e)
+        f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(f)
+        ########################################################################
+        ########################################################################
+        #'''
+
+        with open('csv_item/x_of_video_forest_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(npNEW_LOB.T[0])
+        with open('csv_item/y_of_video_forest_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(npNEW_LOB.T[1])
+        plt.show()
+        #ani.save("output.gif", writer="imagemagick")
+        #'''
+    def run_video_bridge(self):
+        #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
+        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_video_bridge_red()
+        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker="o", color="#B40404")
+        plt.title("already arrange")
+        ########################################################################
+        ########################################################################
+        ###########################     model     ##############################
+        ########################################################################
+        #'''
+        ax = plt.axes()
+        COUNT = np.arange(start=0, stop=531, step=1, dtype= int)
+        ssp=[-0.5,-0.5]
+        for count in COUNT:
+            r = patches.Rectangle(xy=(npNEW_LOB.T[0][count] -0.35,npNEW_LOB.T[1][count] -0.35), width=0.7, height=0.7, ec='#F5A9A9', fill=False)
+            ax.add_patch(r)
+            #c = patches.Circle(xy=(npNEW_LOB.T[0][count],npNEW_LOB.T[1][count]), radius=0.4, ec='#F5A9A9',fill=False)
+            #ax.add_patch(c)
+        ############################     field     #############################
+        ########################################################################
+        sotowaku = patches.Rectangle(xy=(-13.3+0.5,-0.5), width=13.3, height=10, ec='#FAAC58',fill=False)
+        ax.add_patch(sotowaku)
+        forest = patches.Rectangle(xy=(-2.45+0.5,-0.5), width=2.45, height=8, ec='#FAAC58',fill=False)
+        ax.add_patch(forest)
+        bridge = patches.Rectangle(xy=(-1.725 +0.5, 6.5 -0.5), width=1, height=1.5, ec='#FAAC58',fill=False)
+        ax.add_patch(bridge)
+        bri1 = patches.Circle(xy=(-1.725 +0.5, 6.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri1)
+        bri2 = patches.Circle(xy=(-1.725 +0.5, 6.5+1.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri2)
+
+
+        d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(d)
+        e = patches.Circle(xy=(-1*(1.225+ssp[0]),3.5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(e)
+        f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(f)
+        #'''
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        plt.axis("equal")
+        plt.grid(True)
+        plt.show()
+        INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
+        #INDEX,len_INDEX = self.target.get_new_index_set()
+        '''
+        V = self.target.get_V()
+        for index in INDEX:
+            print("V[{}] = {}m/s".format(index,V[index]))
+        '''
+        '''#FF
+        fig = plt.figure()
+        ims = []
+        INDEX = np.arange(start=1, stop=len(npNEW_LOB)-1, step=1, dtype= int)
+        X = []
+        Y = []
+        x=0
+        y=0
+        vx=self.target.get_vx()
+        vy=self.target.get_vy()
+        alfa=self.target.get_alfa()
+        V = self.target.get_V()
+        #print("V = {}".format(V))
+        for index in INDEX:
+            x = x + vx[index] * 0.008
+            y = y + vy[index] * 0.008
+            X.append(x)
+            Y.append(y)
+
+            #vehi = np.matrix([[0.4, 0.4, -0.4, -0.4],[0.4, -0.4, -0.4, 0.4]])
+            vehi = np.matrix([[0, 0.35, 0.35, -0.35, -0.35, 0],[0.7, 0.35, -0.35, -0.35, 0.35, 0.7]])
+            Rot = np.matrix([[np.cos(-alfa[index]),-np.sin(-alfa[index])],[np.sin(-alfa[index]),np.cos(-alfa[index])]])
+            STATE = [[x],[y]]
+            newvehi = Rot * vehi + STATE
+            img = plt.plot(X,Y,marker=".",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker="p",color="#FAAC58")
+
+            plt.title("V = {}m/s".format(V[index]))
+            #print("V = {}m/s".format(V[index]))
+            #plt.title("V = "+ str(V[index])[:4])
+            plt.axis("equal")
+            plt.grid(True)
+            ims.append(img)
+        #plt.pause(0.01)
+        ani = animation.ArtistAnimation(fig, ims, interval=1)
+        ####
+        ax = plt.axes()
+        ############################     field     #############################
+        ########################################################################
+        sotowaku = patches.Rectangle(xy=(-13.3+0.5,-0.5), width=13.3, height=10, ec='#FAAC58',fill=False)
+        ax.add_patch(sotowaku)
+        forest = patches.Rectangle(xy=(-2.45+0.5,-0.5), width=2.45, height=8, ec='#FAAC58',fill=False)
+        ax.add_patch(forest)
+        bridge = patches.Rectangle(xy=(-1.725 +0.5, 6.5 -0.5), width=1, height=1.5, ec='#FAAC58',fill=False)
+        ax.add_patch(bridge)
+        bri1 = patches.Circle(xy=(-1.725 +0.5, 6.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri1)
+        bri2 = patches.Circle(xy=(-1.725 +0.5, 6.5+1.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri2)
+
+
+        d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(d)
+        e = patches.Circle(xy=(-1*(1.225+ssp[0]),3.5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(e)
+        f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(f)
+        ########################################################################
+        ########################################################################
+        #'''
+
+        with open('csv_item/x_of_video_bridge_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(npNEW_LOB.T[0])
+        with open('csv_item/y_of_video_bridge_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(npNEW_LOB.T[1])
+        plt.show()
+        #ani.save("output.gif", writer="imagemagick")
+        #'''

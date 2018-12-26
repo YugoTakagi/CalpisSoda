@@ -40,7 +40,9 @@ def main():
 
     #game.run_through_the_forest()
     #game.run()
-    game.run_circle()
+    #game.run_circle()
+    #game.run_video_forest()
+    game.run_video_bridge()
 
 
 
