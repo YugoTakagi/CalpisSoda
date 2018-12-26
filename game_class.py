@@ -542,3 +542,83 @@ class game_class(object):
         plt.show()
         #ani.save("output.gif", writer="imagemagick")
         #'''
+    def run_video_forest_simple(arg):
+        ssp=[-0.5,-0.5]
+        xlist1 = np.linspace(0.0, -1*(1.940+ssp[0]), 100, dtype= float)
+        xlist2 = np.linspace(-1*(1.940+ssp[0]), -1*(1.940+ssp[0]), 100, dtype= float)
+        xlist3 = np.linspace(-1*(1.940+ssp[0]), 0.0, 100, dtype= float)
+        xlist4 = np.linspace(0.0, 0.0, 100, dtype= float)
+        xlist5 = np.linspace(0.0, -1*(1.940+ssp[0]), 100, dtype= float)
+        xlist6 = np.linspace(-1*(1.940+ssp[0]), -1*(1.940+ssp[0]), 100, dtype= float)
+        xlist7 = np.linspace(-1*(1.940+ssp[0]), -1*(1.225+ssp[0]), 100, dtype= float)
+        xlist8 = np.linspace(-1*(1.225+ssp[0]), -1*(1.225+ssp[0]), 100, dtype= float)
+
+        ylist1 = np.linspace(0.0, 0.0, 100, dtype= float)
+        ylist2 = np.linspace(0.0, 2+ssp[1]+0.75, 100, dtype= float)
+        ylist3 = np.linspace(2+ssp[1]+0.75, 2+ssp[1]+0.75, 100, dtype= float)
+        ylist4 = np.linspace(2+ssp[1]+0.75, 3.5+ssp[1]+0.75, 100, dtype= float)
+        ylist5 = np.linspace(3.5+ssp[1]+0.75, 3.5+ssp[1]+0.75, 100, dtype= float)
+        ylist6 = np.linspace(3.5+ssp[1]+0.75, 5+ssp[1]+0.75, 100, dtype= float)
+        ylist7 = np.linspace(5+ssp[1]+0.75, 5+ssp[1]+0.75, 100, dtype= float)
+        ylist8 = np.linspace(5+ssp[1]+0.75, 6.5+ssp[1], 100, dtype= float)
+
+        xLIST = []
+        yLIST = []
+        xLIST.extend(xlist1)
+        xLIST.extend(xlist2)
+        xLIST.extend(xlist3)
+        xLIST.extend(xlist4)
+        xLIST.extend(xlist5)
+        xLIST.extend(xlist6)
+        xLIST.extend(xlist7)
+        xLIST.extend(xlist8)
+
+        yLIST.extend(ylist1)
+        yLIST.extend(ylist2)
+        yLIST.extend(ylist3)
+        yLIST.extend(ylist4)
+        yLIST.extend(ylist5)
+        yLIST.extend(ylist6)
+        yLIST.extend(ylist7)
+        yLIST.extend(ylist8)
+
+        plt.plot(xLIST,yLIST, marker="o", color="#B40404")
+        plt.title("already arrange")
+
+        ax = plt.axes()
+        COUNT = np.arange(start=0, stop=531, step=1, dtype= int)
+        ssp=[-0.5,-0.5]
+        ############################     field     #############################
+        ########################################################################
+        sotowaku = patches.Rectangle(xy=(-13.3+0.5,-0.5), width=13.3, height=10, ec='#FAAC58',fill=False)
+        ax.add_patch(sotowaku)
+        forest = patches.Rectangle(xy=(-2.45+0.5,-0.5), width=2.45, height=8, ec='#FAAC58',fill=False)
+        ax.add_patch(forest)
+        bridge = patches.Rectangle(xy=(-1.725 +0.5, 6.5 -0.5), width=1, height=1.5, ec='#FAAC58',fill=False)
+        ax.add_patch(bridge)
+        bri1 = patches.Circle(xy=(-1.725 +0.5, 6.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri1)
+        bri2 = patches.Circle(xy=(-1.725 +0.5, 6.5+1.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri2)
+
+
+        d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(d)
+        e = patches.Circle(xy=(-1*(1.225+ssp[0]),3.5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(e)
+        f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(f)
+        #'''
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        plt.axis("equal")
+        plt.grid(True)
+        plt.show()
+        with open('csv_item/x_of_video_simple_forest_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(xLIST)
+        with open('csv_item/y_of_video_simple_forest_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(yLIST)
+        plt.show()
