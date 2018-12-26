@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import csv
 
 from scipy import integrate
-from bezier_class import bezier
+from .bezier_class import bezier
 #from color_class import pycolor
 '''
 print pycolor.RED + "RED TEXT" + pycolor.END

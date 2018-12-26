@@ -11,7 +11,7 @@ class bezier(object):
         m = 1
         if n < 2 * k:
             k = n - k
-        for i in xrange(1, k + 1):
+        for i in range(1, k + 1):
             m = m * (n - i + 1) / i
         return m
     def bernstein(self, n, i, t):

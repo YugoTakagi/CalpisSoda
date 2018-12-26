@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+import csv
 
 #'''
 #%matplotlib notebook
@@ -228,7 +229,7 @@ class game_class(object):
             plt.grid(True)
             ims.append(img)
         #plt.pause(0.01)
-        ani = animation.ArtistAnimation(fig, ims, interval=8)
+        ani = animation.ArtistAnimation(fig, ims, interval=1)
         ####
         ax = plt.axes()
         ############################     field     #############################
@@ -260,3 +261,42 @@ class game_class(object):
         #'''
     def run_FF(self):
         pass
+    def run_circle(self):
+        INDEX = np.arange(start=0, stop=1000, step=1, dtype= int)
+        X = []
+        Y = []
+        x=0
+        y=0
+        alfa = []
+        #ax = plt.axes()
+        fig = plt.figure()
+        ims = []
+        for index in INDEX:
+            x = np.cos(index * 2*np.pi/1000)
+            y = np.sin(index * 2*np.pi/1000)
+            X.append(x)
+            Y.append(y)
+            alfa.append(index * np.pi/1000)
+            vehi = np.matrix([[0, 0.35, 0.35, -0.35, -0.35, 0],[0.7, 0.35, -0.35, -0.35, 0.35, 0.7]])
+            Rot = np.matrix([[np.cos(-alfa[index]),-np.sin(-alfa[index])],[np.sin(-alfa[index]),np.cos(-alfa[index])]])
+            STATE = [[x],[y]]
+            newvehi = Rot * vehi + STATE
+            img = plt.plot(X,Y,marker="o",color="#FAAC58") + plt.plot(newvehi[0,:],newvehi[1,:],marker="p",color="#FAAC58")
+
+            plt.title("Circle")
+            plt.axis("equal")
+            plt.grid(True)
+            ims.append(img)
+        #plt.pause(0.01)
+        ani = animation.ArtistAnimation(fig, ims, interval=5)
+        ####
+        with open('csv_item/x_of_circle_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(X)
+        with open('csv_item/y_of_circle_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(Y)
+        with open('csv_item/alfa_of_circle_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(alfa)
+        plt.show()

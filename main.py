@@ -39,7 +39,8 @@ def main():
     ############################################################################
 
     #game.run_through_the_forest()
-    game.run()
+    #game.run()
+    game.run_circle()
 
 
 
