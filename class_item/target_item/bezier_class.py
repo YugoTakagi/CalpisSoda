@@ -53,6 +53,11 @@ class bezier(object):
         with open('csv_item/y_ref.csv', 'w') as f:
             writer = csv.writer(f)  # writer
             writer.writerow(NEW_LOBS.T[1])
+        with open('csv_item/test.csv', 'w') as f:
+            writer = csv.writer(f)
+            #writer.writeheader()
+            writer.writerow(NEW_LOBS.T[0])
+            writer.writerow(NEW_LOBS.T[1])
         #'''
         plt.plot(NEW_LOBS.T[0], NEW_LOBS.T[1], marker="o")
         plt.axis("equal")

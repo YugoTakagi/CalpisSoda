@@ -147,7 +147,22 @@ class game_class(object):
     def run(self):
         #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
         npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_red()
-        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker="o", color="#B40404")
+        plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker=".", color="#B40404")
+        print("len = {}, {}".format(len(npNEW_LOB.T[0]),len(npNEW_LOB.T[1])))
+        with open('csv_item/test3.csv', 'w') as f:
+            writer = csv.writer(f)
+            for t0,t1 in zip(npNEW_LOB.T[0],npNEW_LOB.T[1]):
+                writer.writerow((t0,t1))
+
+        with open('csv_item/x_ref2.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(npNEW_LOB.T[0])
+        with open('csv_item/y_ref2.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(npNEW_LOB.T[1])
+            #writer.writeheader()
+            #writer.writerow(npNEW_LOB.T[0])
+            #writer.writerow(npNEW_LOB.T[1])
         plt.title("already arrange")
         ########################################################################
         ########################################################################
@@ -621,4 +636,49 @@ class game_class(object):
         with open('csv_item/y_of_video_simple_forest_ref.csv', 'w') as f:
             writer = csv.writer(f)  # writer
             writer.writerow(yLIST)
+        plt.show()
+    def run_line(self):
+        ssp=[-0.5,-0.5]
+        xlist = np.linspace(0.0, 0.0, 200, dtype= float)
+        ylist = np.linspace(0.0, 1.0, 200, dtype= float)
+        plt.plot(xlist,ylist, marker="o", color="#B40404")
+
+        plt.title("already arrange line")
+
+        ax = plt.axes()
+        COUNT = np.arange(start=0, stop=531, step=1, dtype= int)
+        ssp=[-0.5,-0.5]
+        ############################     field     #############################
+        ########################################################################
+        sotowaku = patches.Rectangle(xy=(-13.3+0.5,-0.5), width=13.3, height=10, ec='#FAAC58',fill=False)
+        ax.add_patch(sotowaku)
+        forest = patches.Rectangle(xy=(-2.45+0.5,-0.5), width=2.45, height=8, ec='#FAAC58',fill=False)
+        ax.add_patch(forest)
+        bridge = patches.Rectangle(xy=(-1.725 +0.5, 6.5 -0.5), width=1, height=1.5, ec='#FAAC58',fill=False)
+        ax.add_patch(bridge)
+        bri1 = patches.Circle(xy=(-1.725 +0.5, 6.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri1)
+        bri2 = patches.Circle(xy=(-1.725 +0.5, 6.5+1.5 -0.5), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(bri2)
+
+
+        d = patches.Circle(xy=(-1*(1.225+ssp[0]),2+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(d)
+        e = patches.Circle(xy=(-1*(1.225+ssp[0]),3.5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(e)
+        f = patches.Circle(xy=(-1*(1.225+ssp[0]),5+ssp[1]), radius=0.08, ec='#FAAC58',fill=False)
+        ax.add_patch(f)
+        #'''
+        ########################################################################
+        ########################################################################
+        ########################################################################
+        plt.axis("equal")
+        plt.grid(True)
+        plt.show()
+        with open('csv_item/x_of_video_line_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(xlist)
+        with open('csv_item/y_of_video_line_ref.csv', 'w') as f:
+            writer = csv.writer(f)  # writer
+            writer.writerow(ylist)
         plt.show()
