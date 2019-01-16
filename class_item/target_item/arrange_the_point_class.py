@@ -7,7 +7,7 @@ from decimal import *
 
 class arrange_the_point(object):
     """docstring for arrange_the_point."""
-    delta_s = 0.0
+    sum_s = 0.0
     ARRANGE_INDEXS = []
     ARRANGE_INDEX_TVP = []
     maxmum_interval = 0
@@ -38,6 +38,37 @@ class arrange_the_point(object):
                 else:
                     pass
         print('self.minmum_interval = {}'.format(self.minmum_interval))
+    def arrange(self, before_x, before_y, TVP_of_S):
+        print('+--+-start arrange-+--+')
+        index = 1
+        index_of_tvp = 1
+        while True:
+            while True:
+                dx = before_x[index+1] - before_x[index]
+                dy = before_y[index+1] - before_y[index]
+                ds = np.sqrt(dx*dx + dy*dy)
+                self.sum_s = ds + self.sum_s
+                if self.sum_s >= TVP_of_S[index_of_tvp]:
+                    if np.abs(self.sum_s) < np.abs(self.sum_s - ds):
+                        self.ARRANGE_INDEXS.append(index)
+                        break
+                    else:
+                        self.ARRANGE_INDEXS.append(index - 1)
+                        index = index - 1
+                        break
+                else:
+                    index += 1
+            if index_of_tvp + 1 >= len(TVP_of_S):
+                break
+            else:
+                index_of_tvp += 1
+
+
+        print('len(TVP_of_S) = {}'.format(len(TVP_of_S)))
+        print('len(before_x) = {}'.format(len(before_x)))
+        print('len(self.ARRANGE_INDEXS) = {}'.format(len(self.ARRANGE_INDEXS)))
+        print('+--+-end arrange-+--+')
+        return self.ARRANGE_INDEXS, len(self.ARRANGE_INDEXS)
     def arrange1(self, before_x, before_y, TVP_of_S):
         print('+--+-start arrange-+--+')
         INDEX_OF_BEFORE = np.arange(start=0, stop=len(before_x)-1, step=1, dtype= int)
@@ -48,10 +79,10 @@ class arrange_the_point(object):
             dx = before_x[index+1] - before_x[index]
             dy = before_y[index+1] - before_y[index]
             ds = np.sqrt(dx*dx + dy*dy)
-            self.delta_s = ds + self.delta_s
-            if self.delta_s <= 0:
-                print("self.delta_s <= 0 ?")
-            BEFORE_S.append(self.delta_s)
+            self.sum_s = ds + self.sum_s
+            if self.sum_s <= 0:
+                print("self.sum_s <= 0 ?")
+            BEFORE_S.append(self.sum_s)
         flag = 0
         index_of_ancer = 0
         for index_of_tvp in INDEX_OF_TVPS:
@@ -86,11 +117,11 @@ class arrange_the_point(object):
             dx = before_x[index+1] - before_x[index]
             dy = before_y[index+1] - before_y[index]
             ds = np.sqrt(dx*dx + dy*dy)
-            self.delta_s = ds + self.delta_s
+            self.sum_s = ds + self.sum_s
             if ds < 0:
-                print("self.delta_s <= 0 ?")
+                print("self.sum_s <= 0 ?")
                 print("dx = {}, dy = {}".format(dx,dy))
-            BEFORE_S.append(self.delta_s)
+            BEFORE_S.append(self.sum_s)
         flag = 0
         index_of_ancer = 0
         for index_of_tvp in INDEX_OF_TVPS:
@@ -147,8 +178,8 @@ class arrange_the_point(object):
                 dx = before_x[index+1] - before_x[index]
                 dy = before_y[index+1] - before_y[index]
                 ds = np.sqrt(dx*dx + dy*dy)
-                self.delta_s = ds + self.delta_s
-                ERROR.append(TVP_of_S[index_for_TVP] - self.delta_s)
+                self.sum_s = ds + self.sum_s
+                ERROR.append(TVP_of_S[index_for_TVP] - self.sum_s)
                 if (-0.00003 <= ERROR[index]) and (ERROR[index] <= 0.00003):
                     self.ARRANGE_INDEXS.append(index)
                     #ARR.append(ERROR[index])
@@ -183,9 +214,9 @@ class arrange_the_point(object):
             dx = before_x[index+1] - before_x[index]
             dy = before_y[index+1] - before_y[index]
             ds = np.sqrt(dx*dx + dy*dy)
-            self.delta_s = ds + self.delta_s
+            self.sum_s = ds + self.sum_s
             if index_for_TVP <= len(TVP_of_S)-1:
-                error = TVP_of_S[index_for_TVP] - self.delta_s
+                error = TVP_of_S[index_for_TVP] - self.sum_s
                 ERROR.append(error)
                 #plt.plot(index,ERROR[index],marker=".",c="#58ACFA")
                 #print(error)
@@ -211,7 +242,7 @@ class arrange_the_point(object):
         print('len(self.ARRANGE_INDEXS) = {}'.format(len(self.ARRANGE_INDEXS)))
         print('+--+-end arrange-+--+')
         return self.ARRANGE_INDEXS, len(self.ARRANGE_INDEXS)
-    def arrange(self, before_x, before_y, TVP_of_S):
+    def arrange_yoi(self, before_x, before_y, TVP_of_S):
         print('+--+-start arrange-+--+')
         index_for_TVP = 1
         self.maximumInterval(TVP_of_S)
@@ -226,10 +257,10 @@ class arrange_the_point(object):
             dx = before_x[index+1] - before_x[index]
             dy = before_y[index+1] - before_y[index]
             ds = np.sqrt(dx*dx + dy*dy)
-            self.delta_s = ds + self.delta_s
-            ERROR.append(TVP_of_S[index_for_TVP] - self.delta_s)
+            self.sum_s = ds + self.sum_s
+            ERROR.append(TVP_of_S[index_for_TVP] - self.sum_s)
             if index_for_TVP <= len(TVP_of_S)-1:
-                #if self.delta_s >= TVP_of_S[index_for_TVP]:
+                #if self.sum_s >= TVP_of_S[index_for_TVP]:
                 if ERROR[index] < 0:
                     self.ARRANGE_INDEXS.append(index)
                     ARR.append(ERROR[index])
