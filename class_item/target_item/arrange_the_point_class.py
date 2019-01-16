@@ -9,6 +9,7 @@ class arrange_the_point(object):
     """docstring for arrange_the_point."""
     delta_s = 0.0
     ARRANGE_INDEXS = []
+    ARRANGE_INDEX_TVP = []
     maxmum_interval = 0
     minmumInterval = 0
     def __init__(self):
@@ -37,7 +38,98 @@ class arrange_the_point(object):
                 else:
                     pass
         print('self.minmum_interval = {}'.format(self.minmum_interval))
-    def arrange(self, before_x, before_y, TVP_of_S):
+    def arrange1(self, before_x, before_y, TVP_of_S):
+        print('+--+-start arrange-+--+')
+        INDEX_OF_BEFORE = np.arange(start=0, stop=len(before_x)-1, step=1, dtype= int)
+        INDEX_OF_TVPS = np.arange(start=1, stop=len(TVP_of_S)-1, step=1, dtype= int)
+        BEFORE_S = []
+        self.maximumInterval(TVP_of_S)
+        for index in INDEX_OF_BEFORE:
+            dx = before_x[index+1] - before_x[index]
+            dy = before_y[index+1] - before_y[index]
+            ds = np.sqrt(dx*dx + dy*dy)
+            self.delta_s = ds + self.delta_s
+            if self.delta_s <= 0:
+                print("self.delta_s <= 0 ?")
+            BEFORE_S.append(self.delta_s)
+        flag = 0
+        index_of_ancer = 0
+        for index_of_tvp in INDEX_OF_TVPS:
+            for index in INDEX_OF_BEFORE:
+                if index <= 1:
+                    b_error = TVP_of_S[index_of_tvp] - BEFORE_S[index]
+                else:
+                    a_error = TVP_of_S[index_of_tvp] - BEFORE_S[index]
+                    if b_error > a_error:
+                        b_error = a_error
+                    else:
+                        self.ARRANGE_INDEXS.append(index)
+                        break
+
+        self.maximumInterval(TVP_of_S)
+        self.minmumInterval(TVP_of_S)
+        print('INDEX_OF_TVPS = {}'.format(INDEX_OF_TVPS))
+        print('len(INDEX_OF_BEFORE) = {}'.format(len(INDEX_OF_BEFORE)))
+        print('len(self.ARRANGE_INDEXS) = {}'.format(len(self.ARRANGE_INDEXS)))
+        print('+--+-end arrange-+--+')
+        return self.ARRANGE_INDEXS, len(self.ARRANGE_INDEXS)
+    def arrange2(self, before_x, before_y, TVP_of_S):
+        print('+--+-start arrange-+--+')
+        count = 0
+        min_index = 0
+
+        INDEX_OF_BEFORE = np.arange(start=0, stop=len(before_x)-1, step=1, dtype= int)
+        INDEX_OF_TVPS = np.arange(start=1, stop=len(TVP_of_S)-1, step=1, dtype= int)
+        BEFORE_S = []
+        self.maximumInterval(TVP_of_S)
+        for index in INDEX_OF_BEFORE:
+            dx = before_x[index+1] - before_x[index]
+            dy = before_y[index+1] - before_y[index]
+            ds = np.sqrt(dx*dx + dy*dy)
+            self.delta_s = ds + self.delta_s
+            if ds < 0:
+                print("self.delta_s <= 0 ?")
+                print("dx = {}, dy = {}".format(dx,dy))
+            BEFORE_S.append(self.delta_s)
+        flag = 0
+        index_of_ancer = 0
+        for index_of_tvp in INDEX_OF_TVPS:
+            INDEX_OF_FLAG = np.arange(start=flag, stop=len(before_x)-1, step=1, dtype= int)#okasiikamo
+            for ind in INDEX_OF_FLAG:
+                interval = BEFORE_S[ind] - BEFORE_S[flag]
+                if interval >= self.maxmum_interval:
+                    index_of_ancer = ind
+                    if int(flag - (flag+index_of_ancer)/2) >= 0:
+                        index_of_start = int(flag - (flag+index_of_ancer)/2)
+                    else:
+                        index_of_start = 0
+                    INDEX_OF_SARCH = np.arange(start=index_of_start, stop=index_of_ancer, step=1, dtype= int)
+                    b_error = 100
+                    for ind_of_sarch in INDEX_OF_SARCH:
+                        a_error = TVP_of_S[index_of_tvp] - BEFORE_S[ind_of_sarch]
+                        if b_error >= a_error:
+                            b_error = a_error
+                            min_index = ind_of_sarch
+                            count += 1
+                            #print("count = {}".format(count))
+                        else:
+                            print("erorr")
+                    #self.ARRANGE_INDEXS.append(min_index)
+                    #self.ARRANGE_INDEX_TVP.append(index_of_tvp)
+
+                    flag = index_of_ancer - 1
+                #break
+            self.ARRANGE_INDEXS.append(min_index)
+            self.ARRANGE_INDEX_TVP.append(index_of_tvp)
+        self.maximumInterval(TVP_of_S)
+        self.minmumInterval(TVP_of_S)
+        print('INDEX_OF_TVPS = {}'.format(INDEX_OF_TVPS))
+        print('len(INDEX_OF_BEFORE) = {}'.format(len(INDEX_OF_BEFORE)))
+        print('len(self.ARRANGE_INDEXS) = {}'.format(len(self.ARRANGE_INDEXS)))
+        #print(self.ARRANGE_INDEX_TVP)
+        print('+--+-end arrange-+--+')
+        return self.ARRANGE_INDEXS, len(self.ARRANGE_INDEXS)
+    def arrange_old3(self, before_x, before_y, TVP_of_S):
         print('+--+-start arrange-+--+')
         index_for_TVP = 1
         self.maximumInterval(TVP_of_S)
@@ -119,7 +211,7 @@ class arrange_the_point(object):
         print('len(self.ARRANGE_INDEXS) = {}'.format(len(self.ARRANGE_INDEXS)))
         print('+--+-end arrange-+--+')
         return self.ARRANGE_INDEXS, len(self.ARRANGE_INDEXS)
-    def arrange_old2(self, before_x, before_y, TVP_of_S):
+    def arrange(self, before_x, before_y, TVP_of_S):
         print('+--+-start arrange-+--+')
         index_for_TVP = 1
         self.maximumInterval(TVP_of_S)
