@@ -8,8 +8,10 @@ from decimal import *
 class arrange_the_point(object):
     """docstring for arrange_the_point."""
     sum_s = 0.0
+    index = 1#nande?
+    index_of_tvp = 1
     ARRANGE_INDEXS = []
-    ARRANGE_INDEX_TVP = []
+    #ARRANGE_INDEX_TVP = []
     maxmum_interval = 0
     minmumInterval = 0
     def __init__(self):
@@ -40,30 +42,40 @@ class arrange_the_point(object):
         print('self.minmum_interval = {}'.format(self.minmum_interval))
     def arrange(self, before_x, before_y, TVP_of_S):
         print('+--+-start arrange-+--+')
-        index = 1
-        index_of_tvp = 1
         while True:
             while True:
-                dx = before_x[index+1] - before_x[index]
-                dy = before_y[index+1] - before_y[index]
-                ds = np.sqrt(dx*dx + dy*dy)
-                self.sum_s = ds + self.sum_s
-                if self.sum_s >= TVP_of_S[index_of_tvp]:
-                    if np.abs(self.sum_s) < np.abs(self.sum_s - ds):
-                        self.ARRANGE_INDEXS.append(index)
+                dx = before_x[self.index] - before_x[self.index-1]
+                dy = before_y[self.index] - before_y[self.index-1]
+                ds = np.sqrt(dx**2 + dy**2)
+                self.sum_s_before = self.sum_s
+                self.sum_s = self.sum_s_before + ds
+                if self.sum_s >= TVP_of_S[self.index_of_tvp]:
+                    if self.sum_s <= self.sum_s_before:
+                        self.ARRANGE_INDEXS.append(self.index)
+                        break
+                    elif self.sum_s > self.sum_s_before:
+                        self.ARRANGE_INDEXS.append(self.index-1)
+                        if self.index-1>0:
+                            self.index = self.index-1
                         break
                     else:
-                        self.ARRANGE_INDEXS.append(index - 1)
-                        index = index - 1
+                        print("Help me!!")
                         break
                 else:
-                    index += 1
-            if index_of_tvp + 1 >= len(TVP_of_S):
+                    if self.index + 1 == len(before_x):
+                        break
+                    else:
+                        self.index += 1
+            if self.index_of_tvp + 1 == len(TVP_of_S):
                 break
             else:
-                index_of_tvp += 1
+                self.index_of_tvp += 1
 
 
+
+
+
+        #print(self.ARRANGE_INDEXS)
         print('len(TVP_of_S) = {}'.format(len(TVP_of_S)))
         print('len(before_x) = {}'.format(len(before_x)))
         print('len(self.ARRANGE_INDEXS) = {}'.format(len(self.ARRANGE_INDEXS)))

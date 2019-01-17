@@ -139,6 +139,7 @@ class target_value_class(object):
         ######################     maiking X REF     ###########################
         ########################################################################
         ########################################################################
+        bez1 = bezier(200000)
         new_index_for_bezier = []
         theta = 0#np.pi/4
         #set_start_point
@@ -161,7 +162,8 @@ class target_value_class(object):
         ########################################################################
         ########################################################################
 
-        nplist_of_bezier1, list_of_bezier1 = self.bez.bezier_making(list_of_bezier_set1)
+        #nplist_of_bezier1, list_of_bezier1 = self.bez.bezier_making(list_of_bezier_set1)
+        nplist_of_bezier1, list_of_bezier1 = bez1.bezier_making(list_of_bezier_set1)
         nplist_of_bezier2, list_of_bezier2 = self.bez.bezier_making(list_of_bezier_set2)
         nplist_of_bezier3, list_of_bezier3 = self.bez.bezier_making(list_of_bezier_set3)
         nplist_of_bezier4, list_of_bezier4 = self.bez.bezier_making(list_of_bezier_set4)

@@ -639,8 +639,8 @@ class game_class(object):
         plt.show()
     def run_line(self):
         ssp=[-0.5,-0.5]
-        xlist = np.linspace(0.0, 0.0, 200, dtype= float)
-        ylist = np.linspace(0.0, 1.0, 200, dtype= float)
+        xlist = np.linspace(0.0, 0.0, 2000, dtype= float)
+        ylist = np.linspace(0.0, 10.0, 2000, dtype= float)
         plt.plot(xlist,ylist, marker="o", color="#B40404")
 
         plt.title("already arrange line")
