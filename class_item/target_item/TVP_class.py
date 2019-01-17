@@ -29,7 +29,7 @@ class trapezoidal_velocity_profile(object):
     def __init__(self):
         pass
     def making_curve_length(self, x_ref, y_ref):
-        list_length = np.arange(start=0.0, stop=len(x_ref)-1, step=1, dtype= int)
+        list_length = np.arange(start=0, stop=len(x_ref)-1, step=1, dtype= int)
         print('+--+-start making_curve_length-+--+')
         #print('list_length = {}'.format(list_length))
         print('len(x_ref) = {}'.format(len(x_ref)))
