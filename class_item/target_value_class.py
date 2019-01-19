@@ -139,8 +139,12 @@ class target_value_class(object):
         ######################     maiking X REF     ###########################
         ########################################################################
         ########################################################################
+<<<<<<< HEAD
         #bez1 = bezier(200000)
         bez1 = bezier(1000)
+=======
+        bez1 = bezier(200000)
+>>>>>>> four_wheel_steering
         new_index_for_bezier = []
         theta = 0#np.pi/4
         #set_start_point

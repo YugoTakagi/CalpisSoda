@@ -19,8 +19,13 @@ import csv
 def main():
     #############################  init target  ################################
     ############################################################################
+<<<<<<< HEAD
     bez = bezier(number_of_points=1000)
     #bez = bezier(number_of_points=5000)
+=======
+    #bez = bezier(number_of_points=3000)
+    bez = bezier(number_of_points=5000)
+>>>>>>> four_wheel_steering
     tvp = trapezoidal_velocity_profile()
     arg = arrange_the_point()
     target = target_value_class(bez=bez, tvp=tvp, arg=arg)
