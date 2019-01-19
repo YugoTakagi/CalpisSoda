@@ -62,6 +62,7 @@ class bezier(object):
         plt.plot(NEW_LOBS.T[0], NEW_LOBS.T[1], marker="o")
         plt.axis("equal")
         plt.grid(True)
+        plt.title("new bezier")
         plt.show()
         #'''
         return NEW_LOBS, new_lob

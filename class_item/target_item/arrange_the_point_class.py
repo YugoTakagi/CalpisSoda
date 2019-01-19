@@ -94,6 +94,7 @@ class arrange_the_point(object):
     def arrange(self, before_x, before_y, TVP_of_S):
         self.ds_befor = 0
         self.index_of_tvp = 0
+        print('+--+-start arrange-+--+')
         for index in range(len(before_x)):
             dx = before_x[index] - before_x[index-1]
             dy = before_y[index] - before_y[index-1]
@@ -106,7 +107,7 @@ class arrange_the_point(object):
                 if len(self.ARRANGE_INDEXS) == len(TVP_of_S):
                     break
         #self.ARRANGE_INDEXS.append(index+1)
-        print(self.ARRANGE_INDEXS)
+        #print(self.ARRANGE_INDEXS)
         print('len(TVP_of_S) = {}'.format(len(TVP_of_S)))
         print('len(before_x) = {}'.format(len(before_x)))
         print('len(self.ARRANGE_INDEXS) = {}'.format(len(self.ARRANGE_INDEXS)))

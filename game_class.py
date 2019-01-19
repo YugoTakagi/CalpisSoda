@@ -146,8 +146,10 @@ class game_class(object):
             print("model error")
     def run(self):
         #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_blue()
-        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_red()
+        #npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_red()
+        npLOB, LOB, npNEW_LOB, NEW_LOB = self.target.making_target_value_test_red_nozaki()
         plt.plot(npNEW_LOB.T[0],npNEW_LOB.T[1], marker=".", color="#B40404")
+        #plt.title("run run")
         print("len = {}, {}".format(len(npNEW_LOB.T[0]),len(npNEW_LOB.T[1])))
         with open('csv_item/test3.csv', 'w') as f:
             writer = csv.writer(f)

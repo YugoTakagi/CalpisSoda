@@ -46,7 +46,7 @@ class trapezoidal_velocity_profile(object):
     def deside(self):
         print('+--+-start deside-+--+')
         num = int(self.time_end/0.008)
-        print('num = {}'.format(num))
+        print('tvp num = {}'.format(num))
         print('+--+-end deside-+--+\n')
         return num
     def making_angle(self, NEW_LOBS, len_new_index_for_bezier):
